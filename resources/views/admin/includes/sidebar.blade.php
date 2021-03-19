@@ -20,7 +20,7 @@
                 Pages
             </li>
             <li class="sidebar-item active">
-                <a href="{{ route('admin.dashboard') }}" class="sidebar-link">
+                <a href="{{ route('adminDashboard.dashboard') }}" class="sidebar-link">
                     <i class="align-middle" data-feather="sliders"></i> <span class="align-middle">Dashboards</span>
                 </a>
             </li>

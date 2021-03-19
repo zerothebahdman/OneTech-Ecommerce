@@ -1,4 +1,4 @@
-@extends('admin.login_layouts')
+@extends('adminDashboard.login_layouts')
 
 @section('backend')
 
@@ -37,7 +37,7 @@
                                             </div>
                                         @enderror
 
-                                        <form method="POST" action="{{ route('admin.login') }}">
+                                        <form method="POST" action="{{ route('adminDashboard.login.store') }}">
                                             @csrf
                                             <div class="form-group">
                                                 <label>Email</label>

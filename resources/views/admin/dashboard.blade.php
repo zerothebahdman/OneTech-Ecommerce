@@ -1,4 +1,4 @@
-@extends('admin.admin_layouts')
+@extends('adminDashboard.admin_layouts')
 
 @section('dashboard')
 
@@ -19,7 +19,7 @@
                             <div class="row no-gutters w-100">
                                 <div class="col-6">
                                     <div class="illustration-text p-3 m-1">
-                                        <h4 class="illustration-text">Welcome, {{ Auth::guard('admin')->user()->name }}
+                                        <h4 class="illustration-text">Welcome, {{ Auth::guard('adminDashboard')->user()->name }}
                                         </h4>
                                         <p class="mb-0">OneTech Dashboard</p>
                                     </div>

@@ -23,10 +23,10 @@
 
 <body data-theme="default" data-layout="fluid" data-sidebar-position="left" data-sidebar-behavior="sticky">
     <div class="wrapper">
-        @include('admin.includes.sidebar')
+        @include('adminDashboard.includes.sidebar')
         <div class="main">
             @include('sweetalert::alert')
-            @include('admin.includes.navbar')
+            @include('adminDashboard.includes.navbar')
             @yield('dashboard')
 
             <footer class="footer">
