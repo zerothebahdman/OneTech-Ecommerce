@@ -139,26 +139,26 @@
                 </a>
 
                 <a class="nav-link dropdown-toggle d-none d-sm-inline-block" href="#" data-toggle="dropdown">
-                    @if (!is_null(Auth::guard('adminDashboard')->user()->profile_photo))
-                        <img src="{{ asset(Auth::guard('adminDashboard')->user()->profile_photo) }}"
+                    @if (!is_null(Auth::guard('admin')->user()->profile_photo))
+                        <img src="{{ asset(Auth::guard('admin')->user()->profile_photo) }}"
                             class="avatar img-fluid rounded-circle mr-1"
-                            alt="{{ Auth::guard('adminDashboard')->user()->name }} Profile Photo" />
+                            alt="{{ Auth::guard('admin')->user()->name }} Profile Photo" />
                     @else
                         <img src="{{ asset('backend/img/avatars/avatar-7.png') }}"
                             class="avatar img-fluid rounded-circle mr-1"
-                            alt="{{ Auth::guard('adminDashboard')->user()->name }} Profile Photo" />
+                            alt="{{ Auth::guard('admin')->user()->name }} Profile Photo" />
                     @endif
-                    <span class="text-dark">{{ Auth::guard('adminDashboard')->user()->name }}</span>
+                    <span class="text-dark">{{ Auth::guard('admin')->user()->name }}</span>
                 </a>
                 <div class="dropdown-menu dropdown-menu-right">
-                    <a class="dropdown-item" href="javascript:;"><i class="align-middle mr-1" data-feather="user"></i>
+                    <a class="dropdown-item" href="{{ route('admin.profile') }}"><i class="align-middle mr-1"
+                            data-feather="user"></i>
                         Profile</a>
-                    <a class="dropdown-item" href="#"><i class="align-middle mr-1" data-feather="pie-chart"></i>
-                        Analytics</a>
                     <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="{{ route('adminDashboard.profile.settings') }}">Settings & Privacy</a>
-                    <a class="dropdown-item" href="#">Help</a>
-                    <a class="dropdown-item" href="{{ route('adminDashboard.logout') }}">Sign out</a>
+                    <a class="dropdown-item" href="{{ route('admin.profile.settings') }}"><i class="align-middle mr-1"
+                            data-feather="settings"></i>Profile Settings</a>
+                    <a class="dropdown-item" href="{{ route('admin.logout') }}"><i class="align-middle mr-1"
+                            data-feather="log-out"></i>Sign out</a>
                 </div>
             </li>
         </ul>

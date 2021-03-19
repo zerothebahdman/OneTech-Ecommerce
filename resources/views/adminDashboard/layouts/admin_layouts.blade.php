@@ -12,7 +12,7 @@
     <meta name="description" content="Responsive Bootstrap 4 Admin &amp; Dashboard Template">
     <meta name="author" content="Bootlab">
 
-    <title>Default Dashboard | AppStack - Admin &amp; Dashboard Template</title>
+    <title>@yield('title', 'OneTech Ecommerce')</title>
 
     <link rel="shortcut icon" href="{{ asset('backend/img/favicon.ico') }}">
 

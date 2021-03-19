@@ -1,4 +1,6 @@
-@extends('adminDashboard.admin_layouts')
+@extends('adminDashboard.layouts.admin_layouts')
+
+@section('title', 'OneTech Ecommerce | Admin Profile Settings')
 
 @section('dashboard')
     <main class="content">
@@ -43,7 +45,7 @@
                                     <h5 class="card-title mb-0">Public info</h5>
                                 </div>
                                 <div class="card-body">
-                                    <form method="POST" action="{{ route('adminDashboard.profile.update') }}"
+                                    <form method="POST" action="{{ route('admin.profile.update') }}"
                                         enctype="multipart/form-data">
                                         @csrf
                                         <div class="row">
@@ -89,16 +91,16 @@
                                             </div>
                                             <div class="col-md-4">
                                                 <div class="text-center">
-                                                    @if (!is_null(Auth::guard('adminDashboard')->user()->profile_photo))
-                                                        <img src="{{ asset(Auth::guard('adminDashboard')->user()->profile_photo) }}"
+                                                    @if (!is_null(Auth::guard('admin')->user()->profile_photo))
+                                                        <img src="{{ asset(Auth::guard('admin')->user()->profile_photo) }}"
                                                             class="rounded-circle img-responsive mt-2" width="128"
                                                             height="128"
-                                                            alt="{{ Auth::guard('adminDashboard')->user()->name }} Profile Photo" />
+                                                            alt="{{ Auth::guard('admin')->user()->name }} Profile Photo" />
                                                     @else
                                                         <img src="{{ asset('backend/img/avatars/avatar-7.png') }}"
                                                             class="rounded-circle img-responsive mt-2" width="128"
                                                             height="128"
-                                                            alt="{{ Auth::guard('adminDashboard')->user()->name }} Profile Photo" />
+                                                            alt="{{ Auth::guard('admin')->user()->name }} Profile Photo" />
                                                     @endif
                                                 </div>
                                             </div>
@@ -106,37 +108,6 @@
 
                                         <button type="submit" class="btn btn-primary">Save changes</button>
                                     </form>
-
-                                    {{-- <h5 class="card-title mt-5">Password</h5>
-
-                                    <form action="{{ route('adminDashboard.password.update') }}" method="POST">
-                                        @csrf
-                                        <div class="form-group">
-                                            <label for="inputPasswordCurrent">Current password</label>
-                                            <input type="password" name="current_password"
-                                                class="form-control @error('current_password') is-invalid @enderror"
-                                                id="inputPasswordCurrent" placeholder="Enter current password">
-                                            @error('current_password')
-                                                <span class="text-danger">{{ $message }}</span>
-                                            @enderror
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="inputPasswordNew">New password</label>
-                                            <input type="password" name="password"
-                                                class="form-control @error('password') is-invalid @enderror"
-                                                placeholder="Enter new password" id="inputPasswordNew">
-                                            @error('password')
-                                                <span class="text-danger">{{ $message }}</span>
-                                            @enderror
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="inputPasswordNew2">Verify password</label>
-                                            <input type="password" name="password_confirmation" class="form-control"
-                                                placeholder="Confirm password" id="inputPasswordNew2">
-                                        </div>
-                                        <button type="submit" class="btn btn-primary">Save changes</button>
-                                    </form> --}}
-
                                 </div>
                             </div>
 
@@ -146,7 +117,7 @@
                                 <div class="card-body">
                                     <h5 class="card-title">Password</h5>
 
-                                    <form action="{{ route('adminDashboard.password.update') }}" method="POST">
+                                    <form action="{{ route('admin.password.update') }}" method="POST">
                                         @csrf
                                         <div class="form-group">
                                             <label for="inputPasswordCurrent">Current password</label>

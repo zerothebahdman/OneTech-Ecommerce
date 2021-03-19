@@ -28,18 +28,20 @@ Route::get('/dashboard', function () {
 // });
 Route::get('/admin/dashboard/logout', [AdminController::class, 'logout'])->name('user.logout');
 
-// Admin Route
+// Admin Dashboard Route
 Route::prefix('/admin/')->name('admin.')->group(function () {
 
     Route::middleware(['guest:admin'])->group(function () {
-        Route::view('login', 'admin.auth.login');
-        Route::post('login', [SuperAdminController::class, 'store'])->name('login');
+        Route::view('login', 'adminDashboard.auth.login')->name('login');
+        Route::post('login', [SuperAdminController::class, 'store'])->name('login.store');
     });
 
     Route::middleware(['auth:admin'])->group(function () {
-        Route::view('dashboard', 'admin.dashboard')->name('dashboard');
+        Route::view('dashboard', 'adminDashboard.dashboard')->name('dashboard');
+        Route::get('profile', [SuperAdminController::class, 'profile'])->name('profile');
         Route::get('profile/settings', [SuperAdminController::class, 'displayProfile'])->name('profile.settings');
         Route::post('profile/settings/update', [SuperAdminController::class, 'updateProfile'])->name('profile.update');
+        Route::post('password/update', [SuperAdminController::class, 'updatePassword'])->name('password.update');
         Route::get('logout', [SuperAdminController::class, 'logout'])->name('logout');
     });
 });

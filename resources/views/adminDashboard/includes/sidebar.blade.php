@@ -20,33 +20,19 @@
                 Pages
             </li>
             <li class="sidebar-item active">
-                <a href="{{ route('adminDashboard.dashboard') }}" class="sidebar-link">
+                <a href="{{ route('admin.dashboard') }}" class="sidebar-link">
                     <i class="align-middle" data-feather="sliders"></i> <span class="align-middle">Dashboards</span>
                 </a>
             </li>
             <li class="sidebar-item">
                 <a href="#pages" data-toggle="collapse" class="sidebar-link collapsed">
-                    <i class="align-middle" data-feather="layout"></i> <span class="align-middle">Pages</span>
+                    <i class="align-middle" data-feather="layout"></i> <span class="align-middle">Categories</span>
                 </a>
                 <ul id="pages" class="sidebar-dropdown list-unstyled collapse " data-parent="#sidebar">
-                    <li class="sidebar-item"><a class="sidebar-link" href="pages-profile.html">Profile</a></li>
-                    <li class="sidebar-item"><a class="sidebar-link" href="pages-settings.html">Settings</a>
+                    <li class="sidebar-item"><a class="sidebar-link" href="pages-profile.html">Category</a></li>
+                    <li class="sidebar-item"><a class="sidebar-link" href="pages-settings.html">Sub Category</a>
                     </li>
-                    <li class="sidebar-item"><a class="sidebar-link" href="pages-clients.html">Clients</a></li>
-                    <li class="sidebar-item">
-                        <a href="#projects" data-toggle="collapse" class="sidebar-link collapsed">
-                            Projects
-                        </a>
-                        <ul id="projects" class="sidebar-dropdown list-unstyled collapse">
-                            <li class="sidebar-item">
-                                <a class="sidebar-link" href="pages-projects-list.html">List</a>
-                            </li>
-                            <li class="sidebar-item">
-                                <a class="sidebar-link" href="pages-projects-detail.html">Detail <span
-                                        class="badge badge-sidebar-primary">New</span></a>
-                            </li>
-                        </ul>
-                    </li>
+                    <li class="sidebar-item"><a class="sidebar-link" href="pages-clients.html">Brand</a></li>
                     <li class="sidebar-item"><a class="sidebar-link" href="pages-invoice.html">Invoice</a></li>
                     <li class="sidebar-item"><a class="sidebar-link" href="pages-pricing.html">Pricing</a></li>
                     <li class="sidebar-item"><a class="sidebar-link" href="pages-tasks.html">Tasks</a></li>

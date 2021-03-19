@@ -8,7 +8,7 @@
     <meta name="description" content="Responsive Bootstrap 4 Admin &amp; Dashboard Template">
     <meta name="author" content="Bootlab">
 
-    <title>Sign Up | AppStack - Admin &amp; Dashboard Template</title>
+    <title>OneTech Admin Login Pages</title>
 
     <link rel="canonical" href="pages-sign-up.html" />
     <link rel="shortcut icon" href="{{ asset('backend/img/favicon.ico') }}">
