@@ -71,12 +71,12 @@
                                             <td>{{ $category->category_name }}</td>
                                             <td>{{ $category->created_at->diffForHumans() }}</td>
                                             <td>
-                                                <a href="{{ route('admin.category.edit', $category->id) }}"
+                                                <a href="{{ route('admin.category.edit', $category->slug) }}"
                                                     class="btn btn-outline-primary">
                                                     <i class="align-left mr-1 mb-1" data-feather="edit-2"></i> Edit
                                                 </a>
 
-                                                <a href="{{ route('admin.category.delete', $category->id) }}"
+                                                <a href="{{ route('admin.category.delete', $category->slug) }}"
                                                     class="btn btn-outline-danger" id="delete">
                                                     <i class="align-left mr-1 mb-1" data-feather="trash-2"></i> Delete
                                                 </a>

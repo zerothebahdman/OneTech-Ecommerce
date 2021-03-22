@@ -46,12 +46,12 @@ Route::prefix('/admin/')->name('admin.')->group(function () {
         Route::post('profile/settings/update', [SuperAdminController::class, 'updateProfile'])->name('profile.update');
         Route::post('password/update', [SuperAdminController::class, 'updatePassword'])->name('password.update');
 
-        // Category route
+        // Product Category route
         Route::get('product/category', [CategoryController::class, 'index'])->name('category.index');
         Route::post('product/category', [CategoryController::class, 'store'])->name('category.store');
-        Route::get('product/category/edit/{id}', [CategoryController::class , 'edit'])->name('category.edit');
+        Route::get('product/category/edit/{slug}', [CategoryController::class , 'edit'])->name('category.edit');
         Route::put('product/category/{id}', [CategoryController::class, 'update'])->name('category.update');
-        Route::get('product/category/{id}', [CategoryController::class , 'destroy'])->name('category.delete');
+        Route::get('product/category/{slug}', [CategoryController::class , 'destroy'])->name('category.delete');
 
         // Admin Logout route
         Route::get('logout', [SuperAdminController::class, 'logout'])->name('logout');

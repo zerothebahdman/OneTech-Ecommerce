@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Admin\Category;
 use Illuminate\Support\Carbon;
+use \Cviebrock\EloquentSluggable\Services\SlugService;
 
 class CategoryController extends Controller
 {
@@ -24,15 +25,16 @@ class CategoryController extends Controller
 
         Category::insert([
             'category_name' => $request->category_name,
+            'slug' => SlugService::createSlug(Category::class, 'slug', $request->category_name),
             'created_at' => Carbon::now(),
         ]);
 
         return back()->with('success', 'Category Added Successfully');
     }
 
-    public function edit($id)
+    public function edit($slug)
     {
-        $categories = Category::findOrFail($id);
+        $categories = Category::where('slug', $slug)->first();
 
         // \DB::enableQueryLog();
         return view('adminDashboard.category.edit', compact('categories')); //->render
@@ -49,14 +51,15 @@ class CategoryController extends Controller
 
         Category::findOrFail($id)->update([
             'category_name' => $request->category_name,
+            'slug' => SlugService::createSlug(Category::class, 'slug', $request->category_name),
         ]);
 
         return redirect()->route('admin.category.index')->with('success', 'Category updated successfully');
     }
 
-    public function destroy($id)
+    public function destroy($slug)
     {
-        Category::findOrFail($id)->delete();
+        Category::where('slug', $slug)->delete();
 
         return back()->with('success', 'Category Deleted Successfully');
     }
