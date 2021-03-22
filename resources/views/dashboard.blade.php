@@ -1,5 +1,5 @@
 @extends('layouts.backend.dashboard')
-
+@section('title', 'OneTech Ecommerce | Admin Dashbaord')
 @section('dashboard')
 
 

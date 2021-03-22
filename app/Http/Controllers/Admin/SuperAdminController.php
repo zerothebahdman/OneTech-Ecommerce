@@ -36,7 +36,7 @@ class SuperAdminController extends Controller
         if (Auth::guard('admin')->user()) {
             $profile = Admin::findOrFail(Auth::guard('admin')->user()->id);
             if ($profile) {
-                return view('adminDashboard.profile_page', compact('profile'));
+                return view('adminDashboard.profileSetup.profile_page', compact('profile'));
             }
         }
     }
@@ -45,7 +45,7 @@ class SuperAdminController extends Controller
         if (Auth::guard('admin')->user()) {
             $adminProfile = Admin::findOrFail(Auth::guard('admin')->user()->id);
             if ($adminProfile) {
-                return view('adminDashboard.profile_settings', compact('adminProfile'));
+                return view('adminDashboard.profileSetup.profile_settings', compact('adminProfile'));
             }
         }
     }

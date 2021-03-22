@@ -1,8 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Admin\AuthenticatedSessionController;
 use App\Http\Controllers\Admin\SuperAdminController;
+use App\Http\Controllers\Admin\Category\CategoryController;
 use App\Http\Controllers\Backend\AdminController;
 
 /*
@@ -26,7 +26,7 @@ Route::get('/dashboard', function () {
 
 // Route::prefix('/admin/dashboard/')->group(function () {
 // });
-Route::get('/admin/dashboard/logout', [AdminController::class, 'logout'])->name('user.logout');
+Route::get('/user/dashboard/logout', [AdminController::class, 'logout'])->name('user.logout');
 
 // Admin Dashboard Route
 Route::prefix('/admin/')->name('admin.')->group(function () {
@@ -37,11 +37,23 @@ Route::prefix('/admin/')->name('admin.')->group(function () {
     });
 
     Route::middleware(['auth:admin'])->group(function () {
+        // Dashboard view
         Route::view('dashboard', 'adminDashboard.dashboard')->name('dashboard');
+
+        // Admin Profile setup route
         Route::get('profile', [SuperAdminController::class, 'profile'])->name('profile');
         Route::get('profile/settings', [SuperAdminController::class, 'displayProfile'])->name('profile.settings');
         Route::post('profile/settings/update', [SuperAdminController::class, 'updateProfile'])->name('profile.update');
         Route::post('password/update', [SuperAdminController::class, 'updatePassword'])->name('password.update');
+
+        // Category route
+        Route::get('product/category', [CategoryController::class, 'index'])->name('category.index');
+        Route::post('product/category', [CategoryController::class, 'store'])->name('category.store');
+        Route::get('product/category/edit/{id}', [CategoryController::class , 'edit'])->name('category.edit');
+        Route::put('product/category/{id}', [CategoryController::class, 'update'])->name('category.update');
+        Route::get('product/category/{id}', [CategoryController::class , 'destroy'])->name('category.delete');
+
+        // Admin Logout route
         Route::get('logout', [SuperAdminController::class, 'logout'])->name('logout');
     });
 });

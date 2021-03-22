@@ -26,33 +26,15 @@
             </li>
             <li class="sidebar-item">
                 <a href="#pages" data-toggle="collapse" class="sidebar-link collapsed">
-                    <i class="align-middle" data-feather="layout"></i> <span class="align-middle">Categories</span>
+                    <i class="align-middle" data-feather="layout"></i> <span class="align-middle">Product
+                        Categories</span>
                 </a>
                 <ul id="pages" class="sidebar-dropdown list-unstyled collapse " data-parent="#sidebar">
-                    <li class="sidebar-item"><a class="sidebar-link" href="pages-profile.html">Category</a></li>
+                    <li class="sidebar-item"><a class="sidebar-link"
+                            href="{{ route('admin.category.index') }}">Category</a></li>
                     <li class="sidebar-item"><a class="sidebar-link" href="pages-settings.html">Sub Category</a>
                     </li>
                     <li class="sidebar-item"><a class="sidebar-link" href="pages-clients.html">Brand</a></li>
-                    <li class="sidebar-item"><a class="sidebar-link" href="pages-invoice.html">Invoice</a></li>
-                    <li class="sidebar-item"><a class="sidebar-link" href="pages-pricing.html">Pricing</a></li>
-                    <li class="sidebar-item"><a class="sidebar-link" href="pages-tasks.html">Tasks</a></li>
-                    <li class="sidebar-item"><a class="sidebar-link" href="pages-chat.html">Chat <span
-                                class="badge badge-sidebar-primary">New</span></a></li>
-                    <li class="sidebar-item"><a class="sidebar-link" href="pages-blank.html">Blank Page</a></li>
-                </ul>
-            </li>
-            <li class="sidebar-item">
-                <a href="#auth" data-toggle="collapse" class="sidebar-link collapsed">
-                    <i class="align-middle" data-feather="users"></i> <span class="align-middle">Auth</span>
-                    <span class="badge badge-sidebar-secondary">Special</span>
-                </a>
-                <ul id="auth" class="sidebar-dropdown list-unstyled collapse " data-parent="#sidebar">
-                    <li class="sidebar-item"><a class="sidebar-link" href="pages-sign-in.html">Sign In</a></li>
-                    <li class="sidebar-item"><a class="sidebar-link" href="pages-sign-up.html">Sign Up</a></li>
-                    <li class="sidebar-item"><a class="sidebar-link" href="pages-reset-password.html">Reset
-                            Password</a></li>
-                    <li class="sidebar-item"><a class="sidebar-link" href="pages-404.html">404 Page</a></li>
-                    <li class="sidebar-item"><a class="sidebar-link" href="pages-500.html">500 Page</a></li>
                 </ul>
             </li>
 
@@ -113,40 +95,6 @@
                             Sourced
                             Data</a></li>
                 </ul>
-            </li>
-
-            <li class="sidebar-item">
-                <a href="#charts" data-toggle="collapse" class="sidebar-link collapsed">
-                    <i class="align-middle" data-feather="pie-chart"></i> <span class="align-middle">Charts</span>
-                    <span class="badge badge-sidebar-primary">New</span>
-                </a>
-                <ul id="charts" class="sidebar-dropdown list-unstyled collapse " data-parent="#sidebar">
-                    <li class="sidebar-item"><a class="sidebar-link" href="charts-chartjs.html">Chart.js</a>
-                    </li>
-                    <li class="sidebar-item"><a class="sidebar-link" href="charts-apexcharts.html">ApexCharts
-                            <span class="badge badge-sidebar-primary">New</span></a></li>
-                </ul>
-            </li>
-            <li class="sidebar-item">
-                <a class="sidebar-link" href="notifications.html">
-                    <i class="align-middle" data-feather="bell"></i> <span class="align-middle">Notifications</span>
-                </a>
-            </li>
-            <li class="sidebar-item">
-                <a href="#maps" data-toggle="collapse" class="sidebar-link collapsed">
-                    <i class="align-middle" data-feather="map-pin"></i> <span class="align-middle">Maps</span>
-                </a>
-                <ul id="maps" class="sidebar-dropdown list-unstyled collapse " data-parent="#sidebar">
-                    <li class="sidebar-item"><a class="sidebar-link" href="maps-google.html">Google Maps</a>
-                    </li>
-                    <li class="sidebar-item"><a class="sidebar-link" href="maps-vector.html">Vector Maps</a>
-                    </li>
-                </ul>
-            </li>
-            <li class="sidebar-item">
-                <a class="sidebar-link" href="calendar.html">
-                    <i class="align-middle" data-feather="calendar"></i> <span class="align-middle">Calendar</span>
-                </a>
             </li>
             <li class="sidebar-item">
                 <a href="#multi" data-toggle="collapse" class="sidebar-link collapsed">

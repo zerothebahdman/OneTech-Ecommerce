@@ -64,6 +64,46 @@
     </div>
 
     <script src="{{ asset('backend/js/app.js') }}"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    {{-- <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script> --}}
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            // Datatables Responsive
+            $("#datatables-reponsive").DataTable({
+                responsive: true
+            });
+        });
+
+    </script>
+
+    <script>
+        $(document).on("click", "#delete", function(e) {
+            e.preventDefault();
+            var link = $(this).attr("href");
+
+            swal({
+                    title: "Are you sure?",
+                    text: "Once deleted, you will not be able to recover this data!",
+                    icon: "warning",
+                    buttons: true,
+                    dangerMode: true,
+                })
+                .then((willDelete) => {
+                    if (willDelete) {
+                        // swal("Poof! Your imaginary file has been deleted!", {
+                        //     icon: "success",
+                        // });
+                        window.location.href = link;
+                    } else {
+                        swal("Your data is safe!", {
+                            icon: "info"
+                        });
+                    }
+                });
+        });
+
+    </script>
 
 </body>
 
