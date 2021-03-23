@@ -41,7 +41,7 @@ class CategoryController extends Controller
         // dd(\DB::getQueryLog());
     }
 
-    public function update(Request $request, $id)
+    public function update(Request $request, $slug)
     {
         $request->validate([
             'category_name' => ['bail', 'required', 'string', 'min:3', 'max:200', 'unique:categories', ]
@@ -49,7 +49,7 @@ class CategoryController extends Controller
             'category_name.unique' => 'This cant be updated because you didnt make any changes.'
         ]);
 
-        Category::findOrFail($id)->update([
+        Category::where('slug', $slug)->update([
             'category_name' => $request->category_name,
             'slug' => SlugService::createSlug(Category::class, 'slug', $request->category_name),
         ]);

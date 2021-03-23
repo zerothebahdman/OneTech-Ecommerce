@@ -24,7 +24,7 @@
                                     </div>
                                 </div>
                             @enderror
-                            <form action="{{ route('admin.category.update', $categories->id) }}" method="POST">
+                            <form action="{{ route('admin.category.update', $categories->slug) }}" method="POST">
                                 @csrf
                                 @method('PUT')
                                 <div class="form-group">

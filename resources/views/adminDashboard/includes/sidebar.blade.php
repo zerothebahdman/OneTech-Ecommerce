@@ -34,7 +34,8 @@
                             href="{{ route('admin.category.index') }}">Category</a></li>
                     <li class="sidebar-item"><a class="sidebar-link" href="pages-settings.html">Sub Category</a>
                     </li>
-                    <li class="sidebar-item"><a class="sidebar-link" href="pages-clients.html">Brand</a></li>
+                    <li class="sidebar-item"><a class="sidebar-link" href="{{ route('admin.brand.index') }}">Brand</a>
+                    </li>
                 </ul>
             </li>
 

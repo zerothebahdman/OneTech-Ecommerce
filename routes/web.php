@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\SuperAdminController;
 use App\Http\Controllers\Admin\Category\CategoryController;
+use App\Http\Controllers\Admin\Brand\BrandController;
 use App\Http\Controllers\Backend\AdminController;
 
 /*
@@ -50,8 +51,15 @@ Route::prefix('/admin/')->name('admin.')->group(function () {
         Route::get('product/category', [CategoryController::class, 'index'])->name('category.index');
         Route::post('product/category', [CategoryController::class, 'store'])->name('category.store');
         Route::get('product/category/edit/{slug}', [CategoryController::class , 'edit'])->name('category.edit');
-        Route::put('product/category/{id}', [CategoryController::class, 'update'])->name('category.update');
+        Route::put('product/category/{slug}', [CategoryController::class, 'update'])->name('category.update');
         Route::get('product/category/{slug}', [CategoryController::class , 'destroy'])->name('category.delete');
+
+        // Product Brand route
+        Route::get('product/brand', [BrandController::class, 'index'])->name('brand.index');
+        Route::post('product/brand', [BrandController::class, 'store'])->name('brand.store');
+        Route::get('product/brand/edit/{slug}', [BrandController::class, 'edit'])->name('brand.edit');
+        Route::put('product/brand/{slug}', [BrandController::class, 'update'])->name('brand.update');
+        Route::get('product/brand/{slug}', [BrandController::class, 'destroy'])->name('brand.delete');
 
         // Admin Logout route
         Route::get('logout', [SuperAdminController::class, 'logout'])->name('logout');
