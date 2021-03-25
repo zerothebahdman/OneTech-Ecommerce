@@ -54,7 +54,14 @@ Route::prefix('/admin/')->name('admin.')->group(function () {
         Route::put('product/category/{slug}', [CategoryController::class, 'update'])->name('category.update');
         Route::get('product/category/{slug}', [CategoryController::class , 'destroy'])->name('category.delete');
 
-        // Product Brand route
+        /* --------------- Sub Category -----------------*/
+        Route::get('product/sub-category', [CategoryController::class, 'subCategoryIndex'])->name('subCategory.index');
+        Route::post('product/sub-category', [CategoryController::class, 'subCategoryStore'])->name('subCategory.store');
+        Route::get('product/sub-category/edit/{slug}', [CategoryController::class, 'subCategoryEdit'])->name('subCategory.edit');
+        Route::put('product/sub-category/{slug}', [CategoryController::class, 'subCategoryUpdate'])->name('subCategory.update');
+        Route::get('/product/sub-category/{slug}', [CategoryController::class, 'subCategoryDelete'])->name('subCategory.delete');
+
+        /*------------------ Product Brand route --------------------*/
         Route::get('product/brand', [BrandController::class, 'index'])->name('brand.index');
         Route::post('product/brand', [BrandController::class, 'store'])->name('brand.store');
         Route::get('product/brand/edit/{slug}', [BrandController::class, 'edit'])->name('brand.edit');
