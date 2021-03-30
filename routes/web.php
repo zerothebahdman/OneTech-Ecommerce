@@ -2,8 +2,10 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\SuperAdminController;
+use App\Http\Controllers\Admin\NewsletterController;
 use App\Http\Controllers\Admin\Category\CategoryController;
 use App\Http\Controllers\Admin\Brand\BrandController;
+use App\Http\Controllers\Admin\Coupon\CouponController;
 use App\Http\Controllers\Backend\AdminController;
 
 /*
@@ -70,6 +72,17 @@ Route::prefix('/admin/')->name('admin.')->group(function () {
 
         // Admin Logout route
         Route::get('logout', [SuperAdminController::class, 'logout'])->name('logout');
+
+        /* --------------------- Coupon Route ---------------------- */
+        Route::get('coupons', [CouponController::class, 'index'])->name('coupon.index');
+        Route::post('coupons', [CouponController::class, 'store'])->name('coupon.store');
+        Route::get('coupons/edit/{slug}', [CouponController::class, 'edit'])->name('coupon.edit');
+        Route::put('coupons/{slug}', [CouponController::class, 'update'])->name('coupon.update');
+        Route::get('coupons/{slug}', [CouponController::class, 'delete'])->name('coupon.delete');
+
+        /* -------------------- Newsletter -------------- */
+        Route::get('newsletter', [NewsletterController::class, 'index'])->name('newsletter.index');
+        Route::post('newsletter', [NewsletterController::class, 'store'])->name('newsletter.store');
     });
 });
 

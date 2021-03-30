@@ -163,7 +163,7 @@
                     </div>
                 </div>
             </div>
-
+            @include('sweetalert::alert')
             <!-- Main Navigation -->
             @yield('welcome')
 
@@ -283,6 +283,7 @@
                     </div>
                 </div>
             </div>
+            {{-- </header> --}}
     </div>
 
     <script src="{{ asset('frontend/js/jquery-3.3.1.min.js') }}"></script>

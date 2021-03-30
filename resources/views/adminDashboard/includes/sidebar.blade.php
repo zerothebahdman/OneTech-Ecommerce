@@ -40,6 +40,18 @@
                 </ul>
             </li>
 
+            <li class="sidebar-item">
+                <a class="sidebar-link" href="{{ route('admin.coupon.index') }}">
+                    <i class="fa fa-ticket-alt align-middle"></i> <span class="align-middle">Coupon</span>
+                </a>
+            </li>
+
+            <li class="sidebar-item">
+                <a class="sidebar-link" href="{{ route('admin.newsletter.index') }}">
+                    <i class="fa fa-ticket-alt align-middle"></i> <span class="align-middle">News Letter</span>
+                </a>
+            </li>
+
             <li class="sidebar-header">
                 Tools & Components
             </li>
