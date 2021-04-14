@@ -9,8 +9,6 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="Responsive Bootstrap 4 Admin &amp; Dashboard Template">
-    <meta name="author" content="Bootlab">
 
     <title>@yield('title', 'OneTech Ecommerce')</title>
 
@@ -18,7 +16,15 @@
 
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500&amp;display=swap" rel="stylesheet">
 
+    <link rel="stylesheet" href="{{ asset('backend/css/tags.css') }}">
+
     <link class="js-stylesheet" href="{{ asset('backend/css/light.css') }}" rel="stylesheet">
+
+
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-tagsinput/0.8.0/bootstrap-tagsinput.css"
+        integrity="sha512-xmGTNt20S0t62wHLmQec2DauG9T+owP9e6VU8GigI0anN7OXLip9i7IwEhelasml2osdxX71XcYm6BQunTQeQg=="
+        crossorigin="anonymous" />
 </head>
 
 <body data-theme="default" data-layout="fluid" data-sidebar-position="left" data-sidebar-behavior="sticky">
@@ -64,20 +70,64 @@
     </div>
 
     <script src="{{ asset('backend/js/app.js') }}"></script>
+{{--     <script src="{{ asset('backend/js/jquery.js') }}"></script>--}}
+{{--    <script src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>--}}
+{{--    <script src="https://cdn.datatables.net/1.10.24/js/dataTables.bootstrap4.min.js"></script>--}}
+{{--    <script src="https://cdn.datatables.net/fixedheader/3.1.8/js/dataTables.fixedHeader.min.js"></script>--}}
+{{--    <script src="https://cdn.datatables.net/responsive/2.2.7/js/dataTables.responsive.min.js"></script>--}}
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-    {{-- <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script> --}}
 
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-tagsinput/0.8.0/bootstrap-tagsinput.js"
+        integrity="sha512-VvWznBcyBJK71YKEKDMpZ0pCVxjNuKwApp4zLF3ul+CiflQi6aIJR+aZCP/qWsoFBA28avL5T5HA+RE+zrGQYg=="
+        crossorigin="anonymous"></script>
+
+    @yield('script')
     <script>
         document.addEventListener("DOMContentLoaded", function() {
             // Datatables Responsive
             $("#datatables-reponsive").DataTable({
-                responsive: true
+                responsive: true,
             });
         });
-
     </script>
-
     <script>
+        // $(document).ready(function() {
+        //     var table = $('#datatables-reponsive').DataTable({
+        //         responsive: true,
+        //     });
+        //
+        //     new $.fn.dataTable.FixedHeader(table);
+        // });
+
+        $(document).ready(function() {
+            $('select[name="category_id"]').on('change', function() {
+
+                // console.log('Listening')
+                var category_id = $(this).val();
+                if (category_id) {
+
+                    $.ajax({
+                        url: "{{ url('/admin/products/subcategory/') }}/" + category_id,
+                        type: "GET",
+                        dataType: "json",
+                        success: function(data) {
+                            $('select[name="sub_category_id"]').empty();
+                            $.each(data, function(key, value) {
+
+                                $('select[name="sub_category_id"]').append(
+                                    '<option value="' + key + '">' + value +
+                                    '</option>');
+                            });
+                        },
+                    });
+
+                } else {
+                    $('select[name="sub_category_id"]').empty();
+                }
+
+            });
+        });
         $(document).on("click", "#delete", function(e) {
             e.preventDefault();
             var link = $(this).attr("href");
@@ -91,7 +141,7 @@
                 })
                 .then((willDelete) => {
                     if (willDelete) {
-                        swal("Poof! File has been deleted successfully!", {
+                        swal("Poof! File has been deleted successfull!", {
                             icon: "success",
                         });
                         // window.location.href = link;

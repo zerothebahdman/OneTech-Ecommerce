@@ -6,6 +6,7 @@ use App\Http\Controllers\Admin\NewsletterController;
 use App\Http\Controllers\Admin\Category\CategoryController;
 use App\Http\Controllers\Admin\Brand\BrandController;
 use App\Http\Controllers\Admin\Coupon\CouponController;
+use App\Http\Controllers\Admin\Product\ProductsController;
 use App\Http\Controllers\Backend\AdminController;
 
 /*
@@ -83,6 +84,16 @@ Route::prefix('/admin/')->name('admin.')->group(function () {
         /* -------------------- Newsletter -------------- */
         Route::get('newsletter', [NewsletterController::class, 'index'])->name('newsletter.index');
         Route::post('newsletter', [NewsletterController::class, 'store'])->name('newsletter.store');
+
+        /* --------------------- Products --------------------- */
+        Route::get('products', [ProductsController::class, 'index'])->name('products.index');
+        Route::post('products', [ProductsController::class, 'store'])->name('products.store');
+        Route::get('products/edit/{slug}', [ProductsController::class, 'edit'])->name('products.edit');
+        Route::put('products/{slug}', [ProductsController::class, 'update'])->name('products.update');
+        Route::get('products/{slug}', [ProductsController::class, 'delete'])->name('products.delete');
+
+        // show all  sub categories with ajax
+        Route::get('products/subcategory/{category_id}', [ProductsController::class, 'getSubCat']);
     });
 });
 

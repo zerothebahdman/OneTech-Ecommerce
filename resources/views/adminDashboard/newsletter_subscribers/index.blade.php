@@ -49,7 +49,7 @@
                                     </div>
                                 </div>
                             @empty
-                                <h5>Nobody subscribed yet.</h5>
+                                <h5>Nobody Subscribed Today.</h5>
                             @endforelse
                         </div>
                     </div>

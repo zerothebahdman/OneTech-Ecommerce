@@ -17,7 +17,7 @@
 
         <ul class="sidebar-nav">
             <li class="sidebar-header">
-                Pages
+                Utility
             </li>
             <li class="sidebar-item active">
                 <a href="{{ route('admin.dashboard') }}" class="sidebar-link">
@@ -46,24 +46,17 @@
                 </a>
             </li>
 
-            <li class="sidebar-item">
-                <a class="sidebar-link" href="{{ route('admin.newsletter.index') }}">
-                    <i class="fa fa-ticket-alt align-middle"></i> <span class="align-middle">News Letter</span>
-                </a>
+            <li class="sidebar-header">
+                Products
             </li>
 
-            <li class="sidebar-header">
-                Tools & Components
-            </li>
             <li class="sidebar-item">
-                <a href="#forms" data-toggle="collapse" class="sidebar-link collapsed">
-                    <i class="align-middle" data-feather="check-square"></i> <span class="align-middle">Forms</span>
+                <a href="#products" data-toggle="collapse" class="sidebar-link collapsed">
+                    <i class="align-middle" data-feather="shopping-bag"></i> <span class="align-middle">Products</span>
                 </a>
-                <ul id="forms" class="sidebar-dropdown list-unstyled collapse " data-parent="#sidebar">
-                    <li class="sidebar-item"><a class="sidebar-link" href="forms-layouts.html">Layouts</a></li>
-                    <li class="sidebar-item"><a class="sidebar-link" href="forms-basic-inputs.html">Basic
-                            Inputs</a>
-                    </li>
+                <ul id="products" class="sidebar-dropdown list-unstyled collapse " data-parent="#sidebar">
+                    <li class="sidebar-item"><a class="sidebar-link" href="{{ route('admin.products.index') }}">All
+                            Products</a></li>
                     <li class="sidebar-item"><a class="sidebar-link" href="forms-input-groups.html">Input
                             Groups</a>
                     </li>
@@ -77,20 +70,6 @@
 
             <li class="sidebar-header">
                 Plugin & Addons
-            </li>
-            <li class="sidebar-item">
-                <a href="#form-plugins" data-toggle="collapse" class="sidebar-link collapsed">
-                    <i class="align-middle" data-feather="check-square"></i> <span class="align-middle">Form
-                        Plugins</span>
-                </a>
-                <ul id="form-plugins" class="sidebar-dropdown list-unstyled collapse " data-parent="#sidebar">
-                    <li class="sidebar-item"><a class="sidebar-link" href="forms-advanced-inputs.html">Advanced
-                            Inputs</a></li>
-                    <li class="sidebar-item"><a class="sidebar-link" href="forms-editors.html">Editors</a></li>
-                    <li class="sidebar-item"><a class="sidebar-link" href="forms-validation.html">Validation</a>
-                    </li>
-                    <li class="sidebar-item"><a class="sidebar-link" href="forms-wizard.html">Wizard</a></li>
-                </ul>
             </li>
             <li class="sidebar-item">
                 <a href="#datatables" data-toggle="collapse" class="sidebar-link collapsed">
@@ -150,6 +129,18 @@
                     </li>
                 </ul>
             </li>
+
+
+            <li class="sidebar-header">
+                Others
+            </li>
+
+            <li class="sidebar-item">
+                <a class="sidebar-link" href="{{ route('admin.newsletter.index') }}">
+                    <i class="fa fa-ticket-alt align-middle"></i> <span class="align-middle">News Letter</span>
+                </a>
+            </li>
+
         </ul>
     </div>
 </nav>
