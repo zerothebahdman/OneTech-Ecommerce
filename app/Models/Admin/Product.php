@@ -7,6 +7,10 @@ use Illuminate\Database\Eloquent\Model;
 use Cviebrock\EloquentSluggable\Sluggable;
 use Illuminate\Support\Str;
 
+/**
+ * @method static where(string $string, $slug)
+ * @method static create(array $array)
+ */
 class Product extends Model
 {
     use HasFactory, Sluggable;
@@ -24,16 +28,23 @@ class Product extends Model
         ];
     }
 
-    public function getRouteKeyName()
+    public function getRouteKeyName(): string
     {
         return 'slug';
     }
 
-    public function category(){
+    public function category(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    {
          return $this->belongsTo(Category::class);
     }
 
-    public function subCategory() {
+    public function subCategory(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    {
          return $this->belongsTo(SubCategory::class);
+    }
+
+    public function brand(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    {
+         return $this->belongsTo(Brand::class);
     }
 }

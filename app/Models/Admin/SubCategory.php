@@ -7,6 +7,9 @@ use Illuminate\Database\Eloquent\Model;
 use App\Models\Admin\Category;
 use Cviebrock\EloquentSluggable\Sluggable;
 
+/**
+ * @method static where(string $string, $category_id)
+ */
 class SubCategory extends Model
 {
     use HasFactory, Sluggable;

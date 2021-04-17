@@ -141,10 +141,10 @@
                 })
                 .then((willDelete) => {
                     if (willDelete) {
-                        swal("Poof! File has been deleted successfull!", {
-                            icon: "success",
-                        });
-                        // window.location.href = link;
+                        // swal("Poof! File has been deleted successfull!", {
+                        //     icon: "success",
+                        // });
+                        window.location.href = link;
                     } else {
                         swal("Your data is safe!", {
                             icon: "info"

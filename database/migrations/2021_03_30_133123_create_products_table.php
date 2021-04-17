@@ -25,8 +25,8 @@ class CreateProductsTable extends Migration
             $table->text('product_details');
             $table->string('product_color');
             $table->string('product_size')->nullable();
-            $table->string('selling_price');
-            $table->string('discount_price')->nullable();
+            $table->decimal('selling_price');
+            $table->decimal('discount_price')->nullable();
             $table->string('video_link')->nullable();
             $table->integer('main_slider')->nullable();
             $table->integer('hot_deals')->nullable();

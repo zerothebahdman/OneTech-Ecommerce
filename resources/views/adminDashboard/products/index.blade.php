@@ -1,7 +1,6 @@
 @extends('adminDashboard.layouts.admin_layouts')
 @section('title', 'OneTech Ecommerce | All Products')
 
-
 @section('dashboard')
     <main class="content">
         <div class="container-fluid p-0">
@@ -66,7 +65,7 @@
                                                         <label for="inputBrands">Brands</label>
                                                         <select id="inputBrands" required name="brand_id"
                                                             class="form-control form-control-lg">
-                                                            <option selected="">Choose Brand...</option>
+                                                            <option>Choose Brand...</option>
                                                             @forelse ($brands as $brand)
                                                                 <option value="{{ $brand->id }}">
                                                                     {{ $brand->brand_name }}</option>
@@ -137,7 +136,7 @@
 
                                                 <div class="form-group">
                                                     <!-- Create the editor container -->
-                                                    <label for="product_description">Product Description <span
+                                                    <label for="editor">Product Description <span
                                                             class="text-danger">*</span></label>
                                                     <textarea name="product_details" id="editor" class="@error('product_details')is-invalid @enderror" placeholder="Write down product details">{{ old('product_details') }}</textarea>
                                                     @error('product_details')
@@ -285,14 +284,29 @@
                                         </td>
                                         <td>
                                             <a href="{{ route('admin.products.edit', $product->slug) }}"
-                                               class="btn btn-outline-primary">
-                                                <i class="align-left mr-1 mb-1" data-feather="edit-2"></i> Edit
+                                               class="btn btn-outline-primary mt-2" title="Edit Product">
+                                                <i class="align-left mr-1 mb-1" data-feather="edit-2"></i>
                                             </a>
 
                                             <a href="{{ route('admin.products.delete', $product->slug) }}"
-                                               class="btn btn-outline-danger mt-2" id="delete">
-                                                <i class="align-left mr-1 mb-1" data-feather="trash-2"></i> Delete
+                                               class="btn btn-outline-danger mt-2" title="Delete Product" id="delete">
+                                                <i class="align-left mr-1 mb-1" data-feather="trash-2"></i>
                                             </a>
+                                            <a href="{{ route('admin.products.details', $product->slug) }}"
+                                               class="btn btn-outline-info mt-2" title="Show Product">
+                                                <i class="align-left mr-1 mb-1" data-feather="eye"></i>
+                                            </a>
+                                            @if($product->status !== 1)
+                                                <a href="{{ route('admin.products.active', $product->slug) }}"
+                                                   class="btn btn-outline-success mt-2" title="Make product available">
+                                                    <i class="align-left mr-1 mb-1" data-feather="thumbs-up"></i>
+                                                </a>
+                                            @else
+                                                <a href="{{ route('admin.products.inactive', $product->slug) }}"
+                                                   class="btn btn-outline-warning mt-2" title="Make Product Unavailable">
+                                                    <i class="align-left mr-1 mb-1" data-feather="thumbs-down"></i>
+                                                </a>
+                                            @endif
                                         </td>
                                     </tr>
                                 @endforeach

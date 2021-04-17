@@ -90,7 +90,11 @@ Route::prefix('/admin/')->name('admin.')->group(function () {
         Route::post('products', [ProductsController::class, 'store'])->name('products.store');
         Route::get('products/edit/{slug}', [ProductsController::class, 'edit'])->name('products.edit');
         Route::put('products/{slug}', [ProductsController::class, 'update'])->name('products.update');
-        Route::get('products/{slug}', [ProductsController::class, 'delete'])->name('products.delete');
+        Route::put('products/image/{slug}', [ProductsController::class, 'updateImage'])->name('products.update.image');
+        Route::get('products/{slug}', [ProductsController::class, 'destroy'])->name('products.delete');
+        Route::get('products/inactive/{slug}', [ProductsController::class, 'inactiveStatus'])->name('products.inactive');
+        Route::get('products/active/{slug}', [ProductsController::class, 'activeStatus'])->name('products.active');
+        Route::get('products/details/{slug}', [ProductsController::class, 'productDetails'])->name('products.details');
 
         // show all  sub categories with ajax
         Route::get('products/subcategory/{category_id}', [ProductsController::class, 'getSubCat']);
