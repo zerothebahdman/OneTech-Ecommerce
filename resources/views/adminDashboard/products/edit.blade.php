@@ -247,9 +247,8 @@
                                             <span class="text-danger">{{ $message }}</span>
                                         @enderror
                                         <img src="{{ asset($products->first_image) }}" width="100" height="100"
-                                            class="rounded rounded-circle mt-3"
-                                            alt="{{ $products->product_name }} first image" />
-                                        <img src="#" id="one" alt="" class="rounded rounded-circle mt-3 ml-3">
+                                            class="rounded mt-3" alt="{{ $products->product_name }} first image" />
+                                        <img src="#" id="one" alt="" class="rounded mt-3 ml-3">
                                     </div>
                                     <div class="form-group col-md-4">
                                         <label for="second_image">Image Two <span class="text-danger">*</span></label>
@@ -260,10 +259,9 @@
                                         @error('second_image')
                                             <span class="text-danger">{{ $message }}</span>
                                         @enderror
-                                        <img src="{{ asset($products->second_image) }}"
-                                            class="rounded rounded-circle mt-3" width="100" height="100"
-                                            alt="{{ $products->product_name }} second image" />
-                                        <img src="#" id="two" class="rounded rounded-circle mt-3" alt="">
+                                        <img src="{{ asset($products->second_image) }}" class="rounded mt-3" width="100"
+                                            height="100" alt="{{ $products->product_name }} second image" />
+                                        <img src="#" id="two" class="rounded mt-3" alt="">
                                     </div>
                                     <div class="form-group col-md-4">
                                         <label for="third_image">Image Three <span class="text-danger">*</span></label>
@@ -274,10 +272,9 @@
                                         @error('third_image')
                                             <span class="text-danger">{{ $message }}</span>
                                         @enderror
-                                        <img src="{{ asset($products->third_image) }}"
-                                            class="rounded rounded-circle mt-3" width="100" height="100"
-                                            alt="{{ $products->product_name }} Third image" />
-                                        <img src="#" id="three" class="rounded rounded-circle mt-3" alt="">
+                                        <img src="{{ asset($products->third_image) }}" class="rounded mt-3" width="100"
+                                            height="100" alt="{{ $products->product_name }} Third image" />
+                                        <img src="#" id="three" class="rounded mt-3" alt="">
                                     </div>
                                 </div>
 

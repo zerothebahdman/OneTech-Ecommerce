@@ -35,7 +35,7 @@ class ProductsController extends Controller
          $request->validate([
              'category_id' => ['bail', 'required'],
              'sub_category_id' => ['bail', 'required'],
-             'product_name' => ['bail', 'required', 'string', 'min:3', 'max:30', 'unique:products,product_name'],
+             'product_name' => ['bail', 'required', 'string', 'min:3', 'max:100', 'unique:products,product_name'],
              'product_quantity' => ['bail', 'required', 'numeric'],
              'product_color' => ['bail', 'string'],
              'selling_price' => ['bail', 'required', 'numeric'],
@@ -51,13 +51,13 @@ class ProductsController extends Controller
 
         if ($image_one && $image_two && $image_three) {
             $gen_image_one = hexdec(uniqid()).'.'.$image_one->getClientOriginalExtension();
-            Image::make($image_one)->resize('300', '300')->save('backend/img/products/'.$gen_image_one);
+            Image::make($image_one)->resize('800', '600')->save('backend/img/products/'.$gen_image_one);
 
             $gen_image_two = hexdec(uniqid()).'.'.$image_two->getClientOriginalExtension();
-            Image::make($image_two)->resize('300', '300')->save('backend/img/products/'.$gen_image_two);
+            Image::make($image_two)->resize('800', '600')->save('backend/img/products/'.$gen_image_two);
 
             $gen_image_three = hexdec(uniqid()).'.'.$image_three->getClientOriginalExtension();
-            Image::make($image_three)->resize('300', '300')->save('backend/img/products/'.$gen_image_three);
+            Image::make($image_three)->resize('800', '600')->save('backend/img/products/'.$gen_image_three);
         }
 
         $saveImageOneToDatabase = 'backend/img/products/'.$gen_image_one;
@@ -81,6 +81,7 @@ class ProductsController extends Controller
             'second_image'  => $saveImageTwoToDatabase,
             'third_image'  => $saveImageThreeToDatabase,
             'best_rated' => $request['best_rated'],
+            'main_slider' => $request['main_slider'],
             'mid_slider' => $request['mid_slider'],
             'trending' => $request['trending'],
             'hot_new' => $request['hot_new'],
@@ -88,7 +89,7 @@ class ProductsController extends Controller
             'status' => 1,
 //            'created_at' => Carbon::now(),
         ]);
-         return back()->with('success', 'Product added successfully');
+         return back()->with('success', $request['product_name'] . ' added successfully');
 
     }
 
@@ -106,7 +107,7 @@ class ProductsController extends Controller
             'category_id' => ['bail', 'required'],
             'brand_id' => ['bail', 'required'],
             'sub_category_id' => ['bail', 'required'],
-            'product_name' => ['bail', 'required', 'string', 'min:3', 'max:30'],
+            'product_name' => ['bail', 'required', 'string', 'min:3', 'max:100'],
             'product_quantity' => ['bail', 'required', 'numeric'],
             'product_color' => ['bail', 'string'],
             'selling_price' => ['bail', 'required', 'numeric'],
@@ -127,6 +128,7 @@ class ProductsController extends Controller
             'product_details' => $request['product_details'],
             'best_rated' => $request['best_rated'],
             'mid_slider' => $request['mid_slider'],
+            'main_slider' => $request['main_slider'],
             'trending' => $request['trending'],
             'hot_new' => $request['hot_new'],
             'hot_deals' => $request['hot_deals'],
@@ -134,7 +136,7 @@ class ProductsController extends Controller
         ]);
 
         if ($update) {
-            return redirect(route('admin.products.index'))->with('success', $request['product_name'] . 'Product Updated Successfully');
+            return redirect(route('admin.products.index'))->with('success', $request['product_name'] . ' Updated Successfully');
         } else {
             return redirect(route('admin.products.index'))->with('success', 'Nothing changed');
         }
@@ -160,7 +162,7 @@ class ProductsController extends Controller
 
         if ($image_one) {
             $gen_image_one = hexdec(uniqid()).'.'.$image_one->getClientOriginalExtension();
-            Image::make($image_one)->resize('300', '300')->save('backend/img/products/'.$gen_image_one);
+            Image::make($image_one)->resize('800', '600')->save('backend/img/products/'.$gen_image_one);
 
             @unlink($old_first_image);
 
@@ -175,7 +177,7 @@ class ProductsController extends Controller
 
         if ($image_two) {
             $gen_image_two = hexdec(uniqid()).'.'.$image_two->getClientOriginalExtension();
-            Image::make($image_two)->resize('300', '300')->save('backend/img/products/'.$gen_image_two);
+            Image::make($image_two)->resize('800', '600')->save('backend/img/products/'.$gen_image_two);
 
             @unlink($old_second_image);
 
@@ -189,7 +191,7 @@ class ProductsController extends Controller
         }
         if ($image_three) {
             $gen_image_three = hexdec(uniqid()).'.'.$image_three->getClientOriginalExtension();
-            Image::make($image_three)->resize('300', '300')->save('backend/img/products/'.$gen_image_three);
+            Image::make($image_three)->resize('800', '600')->save('backend/img/products/'.$gen_image_three);
 
             @unlink($old_third_image);
 

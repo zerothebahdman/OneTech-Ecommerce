@@ -1,100 +1,128 @@
-<nav x-data="{ open: false }" class="bg-white border-b border-gray-100">
-    <!-- Primary Navigation Menu -->
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="flex justify-between h-16">
-            <div class="flex">
-                <!-- Logo -->
-                <div class="flex-shrink-0 flex items-center">
-                    <a href="{{ route('dashboard') }}">
-                        <x-application-logo class="block h-10 w-auto fill-current text-gray-600" />
-                    </a>
+<div class="top_bar">
+    <div class="container">
+        <div class="row">
+            <div class="col d-flex flex-row">
+                <div class="top_bar_contact_item">
+                    <div class="top_bar_icon"><img src="{{ asset('frontend/images/phone.png') }}" alt="">
+                    </div>+38 068 005 3570
                 </div>
+                <div class="top_bar_contact_item">
+                    <div class="top_bar_icon"><img src="{{ asset('frontend/images/mail.png') }}" alt="">
+                    </div><a href="mailto:fastsales@gmail.com">fastsales@gmail.com</a>
+                </div>
+                <div class="top_bar_content ml-auto">
+                    <div class="top_bar_menu">
+                        <ul class="standard_dropdown top_bar_dropdown">
+                            <li>
+                                <a href="#">English<i class="fas fa-chevron-down"></i></a>
+                                <ul>
+                                    <li><a href="#">Italian</a></li>
+                                    <li><a href="#">Spanish</a></li>
+                                    <li><a href="#">Japanese</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="#">$ US dollar<i class="fas fa-chevron-down"></i></a>
+                                <ul>
+                                    <li><a href="#">EUR Euro</a></li>
+                                    <li><a href="#">GBP British Pound</a></li>
+                                    <li><a href="#">JPY Japanese Yen</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="top_bar_user">
+                        <div class="user_icon"><img src="{{ asset('frontend/images/user.svg') }}" alt="">
+                        </div>
+                        @if (Route::has('login'))
+                            @auth
+                                <a href="{{ route('dashboard') }}" class="text-sm text-gray-700 underline">Dashboard</a>
+                            @else
+                                <a href="{{ route('login') }}" class="text-sm text-gray-700 underline">Log
+                                    in</a>
 
-                <!-- Navigation Links -->
-                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
-                        {{ __('Dashboard') }}
-                    </x-nav-link>
+                                @if (Route::has('register'))
+                                    <a href="{{ route('register') }}"
+                                        class="ml-4 text-sm text-gray-700 underline">Register</a>
+                                @endif
+                            @endauth
+                        @endif
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Header Main -->
+
+<div class="header_main">
+    <div class="container">
+        <div class="row">
+
+            <!-- Logo -->
+            <div class="col-lg-2 col-sm-3 col-3 order-1">
+                <div class="logo_container">
+                    <div class="logo"><a href="#">OneTech</a></div>
                 </div>
             </div>
 
-            <!-- Settings Dropdown -->
-            <div class="hidden sm:flex sm:items-center sm:ml-6">
-                <x-dropdown align="right" width="48">
-                    <x-slot name="trigger">
-                        <button class="flex items-center text-sm font-medium text-gray-500 hover:text-gray-700 hover:border-gray-300 focus:outline-none focus:text-gray-700 focus:border-gray-300 transition duration-150 ease-in-out">
-                            <div>{{ Auth::user()->name }}</div>
+            <!-- Search -->
+            <div class="col-lg-6 col-12 order-lg-2 order-3 text-lg-left text-right">
+                <div class="header_search">
+                    <div class="header_search_content">
+                        <div class="header_search_form_container">
+                            <form action="#" class="header_search_form clearfix">
+                                <input type="search" required="required" class="header_search_input"
+                                    placeholder="Search for products...">
+                                <div class="custom_dropdown">
+                                    <div class="custom_dropdown_list">
+                                        <span class="custom_dropdown_placeholder clc">All Categories</span>
+                                        <i class="fas fa-chevron-down"></i>
+                                        <ul class="custom_list clc">
+                                            @foreach ($categories as $category)
+                                                <li><a class="clc" href="#">{{ $category->category_name }}</a>
+                                                </li>
 
-                            <div class="ml-1">
-                                <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
-                                    <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
-                                </svg>
+                                            @endforeach
+                                        </ul>
+                                    </div>
+                                </div>
+                                <button type="submit" class="header_search_button trans_300" value="Submit"><img
+                                        src="{{ asset('frontend/images/search.png') }}" alt=""></button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Wishlist -->
+            <div class="col-lg-4 col-9 order-lg-3 order-2 text-lg-left text-right">
+                <div class="wishlist_cart d-flex flex-row align-items-center justify-content-end">
+                    <div class="wishlist d-flex flex-row align-items-center justify-content-end">
+                        <div class="wishlist_icon"><img src="{{ asset('frontend/images/heart.png') }}" alt="">
+                        </div>
+                        <div class="wishlist_content">
+                            <div class="wishlist_text"><a href="#">Wishlist</a></div>
+                            <div class="wishlist_count">115</div>
+                        </div>
+                    </div>
+
+                    <!-- Cart -->
+                    <div class="cart">
+                        <div class="cart_container d-flex flex-row align-items-center justify-content-end">
+                            <div class="cart_icon">
+                                <img src="{{ asset('frontend/images/cart.png') }}" alt="">
+                                <div class="cart_count"><span>10</span></div>
                             </div>
-                        </button>
-                    </x-slot>
-
-                    <x-slot name="content">
-                        <!-- Authentication -->
-                        <form method="POST" action="{{ route('logout') }}">
-                            @csrf
-
-                            <x-dropdown-link :href="route('logout')"
-                                    onclick="event.preventDefault();
-                                                this.closest('form').submit();">
-                                {{ __('Log out') }}
-                            </x-dropdown-link>
-                        </form>
-                    </x-slot>
-                </x-dropdown>
-            </div>
-
-            <!-- Hamburger -->
-            <div class="-mr-2 flex items-center sm:hidden">
-                <button @click="open = ! open" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 focus:text-gray-500 transition duration-150 ease-in-out">
-                    <svg class="h-6 w-6" stroke="currentColor" fill="none" viewBox="0 0 24 24">
-                        <path :class="{'hidden': open, 'inline-flex': ! open }" class="inline-flex" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-                        <path :class="{'hidden': ! open, 'inline-flex': open }" class="hidden" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-                    </svg>
-                </button>
+                            <div class="cart_content">
+                                <div class="cart_text"><a href="#">Cart</a></div>
+                                <div class="cart_price">$85</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
-
-    <!-- Responsive Navigation Menu -->
-    <div :class="{'block': open, 'hidden': ! open}" class="hidden sm:hidden">
-        <div class="pt-2 pb-3 space-y-1">
-            <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
-                {{ __('Dashboard') }}
-            </x-responsive-nav-link>
-        </div>
-
-        <!-- Responsive Settings Options -->
-        <div class="pt-4 pb-1 border-t border-gray-200">
-            <div class="flex items-center px-4">
-                <div class="flex-shrink-0">
-                    <svg class="h-10 w-10 fill-current text-gray-400" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
-                    </svg>
-                </div>
-
-                <div class="ml-3">
-                    <div class="font-medium text-base text-gray-800">{{ Auth::user()->name }}</div>
-                    <div class="font-medium text-sm text-gray-500">{{ Auth::user()->email }}</div>
-                </div>
-            </div>
-
-            <div class="mt-3 space-y-1">
-                <!-- Authentication -->
-                <form method="POST" action="{{ route('logout') }}">
-                    @csrf
-
-                    <x-responsive-nav-link :href="route('logout')"
-                            onclick="event.preventDefault();
-                                        this.closest('form').submit();">
-                        {{ __('Log out') }}
-                    </x-responsive-nav-link>
-                </form>
-            </div>
-        </div>
-    </div>
-</nav>
+</div>

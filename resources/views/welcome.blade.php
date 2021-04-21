@@ -1,239 +1,262 @@
 @extends('layouts.frontend.welcome')
 
 @section('welcome')
-    <nav class="main_nav">
-        <div class="container">
-            <div class="row">
-                <div class="col">
+    <div class="super_container">
 
-                    <div class="main_nav_content d-flex flex-row">
+        <!-- Header -->
 
-                        <!-- Categories Menu -->
+        <header class="header">
 
-                        <div class="cat_menu_container">
-                            <div class="cat_menu_title d-flex flex-row align-items-center justify-content-start">
-                                <div class="cat_burger"><span></span><span></span><span></span></div>
-                                <div class="cat_menu_text">categories</div>
-                            </div>
+            <!-- Top Bar -->
 
-                            <ul class="cat_menu">
-                                <li><a href="#">Computers &amp; Laptops <i class="fas fa-chevron-right ml-auto"></i></a>
-                                </li>
-                                <li><a href="#">Cameras &amp; Photos<i class="fas fa-chevron-right"></i></a></li>
-                                <li class="hassubs">
-                                    <a href="#">Hardware<i class="fas fa-chevron-right"></i></a>
-                                    <ul>
+            @include('layouts.navigation')
+
+            <!-- Main Navigation -->
+
+            <nav class="main_nav">
+                <div class="container">
+                    <div class="row">
+                        <div class="col">
+
+                            <div class="main_nav_content d-flex flex-row">
+
+                                <!-- Categories Menu -->
+
+                                <div class="cat_menu_container">
+                                    <div class="cat_menu_title d-flex flex-row align-items-center justify-content-start">
+                                        <div class="cat_burger"><span></span><span></span><span></span></div>
+                                        <div class="cat_menu_text">categories</div>
+                                    </div>
+
+                                    <ul class="cat_menu">
+                                        @foreach ($categories as $category)
+                                            <li class="hassubs">
+                                                <a href="#">
+                                                    {{ $category->category_name }}
+                                                    @if(!$category->subCategory->isEmpty())
+                                                        <i class="fas fa-chevron-right"></i>
+                                                    @endif
+                                                </a>
+                                                @if (!$category->subCategory->isEmpty())
+                                                    <ul>
+                                                        @foreach ($category->subCategory as $subCategoryItem)
+                                                            <li><a href="#">{{ $subCategoryItem->sub_category_name }}<i
+                                                                        class="fas fa-chevron-right"></i></a></li>
+                                                        @endforeach
+                                                    </ul>
+                                                @endif
+                                            </li>
+                                        @endforeach
+                                    </ul>
+                                </div>
+
+                                <!-- Main Nav Menu -->
+
+                                <div class="main_nav_menu ml-auto">
+                                    <ul class="standard_dropdown main_nav_dropdown">
+                                        <li><a href="#">Home<i class="fas fa-chevron-down"></i></a></li>
                                         <li class="hassubs">
-                                            <a href="#">Menu Item<i class="fas fa-chevron-right"></i></a>
+                                            <a href="#">Super Deals<i class="fas fa-chevron-down"></i></a>
                                             <ul>
-                                                <li><a href="#">Menu Item<i class="fas fa-chevron-right"></i></a></li>
-                                                <li><a href="#">Menu Item<i class="fas fa-chevron-right"></i></a></li>
-                                                <li><a href="#">Menu Item<i class="fas fa-chevron-right"></i></a></li>
-                                                <li><a href="#">Menu Item<i class="fas fa-chevron-right"></i></a></li>
-                                            </ul>
-                                        </li>
-                                        <li><a href="#">Menu Item<i class="fas fa-chevron-right"></i></a></li>
-                                        <li><a href="#">Menu Item<i class="fas fa-chevron-right"></i></a></li>
-                                        <li><a href="#">Menu Item<i class="fas fa-chevron-right"></i></a></li>
-                                    </ul>
-                                </li>
-                                <li><a href="#">Smartphones &amp; Tablets<i class="fas fa-chevron-right"></i></a></li>
-                                <li><a href="#">TV &amp; Audio<i class="fas fa-chevron-right"></i></a></li>
-                                <li><a href="#">Gadgets<i class="fas fa-chevron-right"></i></a></li>
-                                <li><a href="#">Car Electronics<i class="fas fa-chevron-right"></i></a></li>
-                                <li><a href="#">Video Games &amp; Consoles<i class="fas fa-chevron-right"></i></a></li>
-                                <li><a href="#">Accessories<i class="fas fa-chevron-right"></i></a></li>
-                            </ul>
-                        </div>
-
-                        <!-- Main Nav Menu -->
-
-                        <div class="main_nav_menu ml-auto">
-                            <ul class="standard_dropdown main_nav_dropdown">
-                                <li><a href="#">Home<i class="fas fa-chevron-down"></i></a></li>
-                                <li class="hassubs">
-                                    <a href="#">Super Deals<i class="fas fa-chevron-down"></i></a>
-                                    <ul>
-                                        <li>
-                                            <a href="#">Menu Item<i class="fas fa-chevron-down"></i></a>
-                                            <ul>
+                                                <li>
+                                                    <a href="#">Menu Item<i class="fas fa-chevron-down"></i></a>
+                                                    <ul>
+                                                        <li><a href="#">Menu Item<i class="fas fa-chevron-down"></i></a>
+                                                        </li>
+                                                        <li><a href="#">Menu Item<i class="fas fa-chevron-down"></i></a>
+                                                        </li>
+                                                        <li><a href="#">Menu Item<i class="fas fa-chevron-down"></i></a>
+                                                        </li>
+                                                    </ul>
+                                                </li>
                                                 <li><a href="#">Menu Item<i class="fas fa-chevron-down"></i></a></li>
                                                 <li><a href="#">Menu Item<i class="fas fa-chevron-down"></i></a></li>
                                                 <li><a href="#">Menu Item<i class="fas fa-chevron-down"></i></a></li>
                                             </ul>
                                         </li>
-                                        <li><a href="#">Menu Item<i class="fas fa-chevron-down"></i></a></li>
-                                        <li><a href="#">Menu Item<i class="fas fa-chevron-down"></i></a></li>
-                                        <li><a href="#">Menu Item<i class="fas fa-chevron-down"></i></a></li>
-                                    </ul>
-                                </li>
-                                <li class="hassubs">
-                                    <a href="#">Featured Brands<i class="fas fa-chevron-down"></i></a>
-                                    <ul>
-                                        <li>
-                                            <a href="#">Menu Item<i class="fas fa-chevron-down"></i></a>
+                                        <li class="hassubs">
+                                            <a href="#">Featured Brands<i class="fas fa-chevron-down"></i></a>
                                             <ul>
+                                                <li>
+                                                    <a href="#">Menu Item<i class="fas fa-chevron-down"></i></a>
+                                                    <ul>
+                                                        <li><a href="#">Menu Item<i class="fas fa-chevron-down"></i></a>
+                                                        </li>
+                                                        <li><a href="#">Menu Item<i class="fas fa-chevron-down"></i></a>
+                                                        </li>
+                                                        <li><a href="#">Menu Item<i class="fas fa-chevron-down"></i></a>
+                                                        </li>
+                                                    </ul>
+                                                </li>
                                                 <li><a href="#">Menu Item<i class="fas fa-chevron-down"></i></a></li>
                                                 <li><a href="#">Menu Item<i class="fas fa-chevron-down"></i></a></li>
                                                 <li><a href="#">Menu Item<i class="fas fa-chevron-down"></i></a></li>
                                             </ul>
                                         </li>
-                                        <li><a href="#">Menu Item<i class="fas fa-chevron-down"></i></a></li>
-                                        <li><a href="#">Menu Item<i class="fas fa-chevron-down"></i></a></li>
-                                        <li><a href="#">Menu Item<i class="fas fa-chevron-down"></i></a></li>
-                                    </ul>
-                                </li>
-                                <li class="hassubs">
-                                    <a href="#">Pages<i class="fas fa-chevron-down"></i></a>
-                                    <ul>
-                                        <li><a href="shop.html">Shop<i class="fas fa-chevron-down"></i></a></li>
-                                        <li><a href="product.html">Product<i class="fas fa-chevron-down"></i></a></li>
+                                        <li class="hassubs">
+                                            <a href="#">Pages<i class="fas fa-chevron-down"></i></a>
+                                            <ul>
+                                                <li><a href="shop.html">Shop<i class="fas fa-chevron-down"></i></a></li>
+                                                <li><a href="product.html">Product<i class="fas fa-chevron-down"></i></a>
+                                                </li>
+                                                <li><a href="blog.html">Blog<i class="fas fa-chevron-down"></i></a></li>
+                                                <li><a href="blog_single.html">Blog Post<i
+                                                            class="fas fa-chevron-down"></i></a></li>
+                                                <li><a href="regular.html">Regular Post<i
+                                                            class="fas fa-chevron-down"></i></a></li>
+                                                <li><a href="cart.html">Cart<i class="fas fa-chevron-down"></i></a></li>
+                                                <li><a href="contact.html">Contact<i class="fas fa-chevron-down"></i></a>
+                                                </li>
+                                            </ul>
+                                        </li>
                                         <li><a href="blog.html">Blog<i class="fas fa-chevron-down"></i></a></li>
-                                        <li><a href="blog_single.html">Blog Post<i class="fas fa-chevron-down"></i></a></li>
-                                        <li><a href="regular.html">Regular Post<i class="fas fa-chevron-down"></i></a></li>
-                                        <li><a href="cart.html">Cart<i class="fas fa-chevron-down"></i></a></li>
                                         <li><a href="contact.html">Contact<i class="fas fa-chevron-down"></i></a></li>
                                     </ul>
-                                </li>
-                                <li><a href="blog.html">Blog<i class="fas fa-chevron-down"></i></a></li>
-                                <li><a href="contact.html">Contact<i class="fas fa-chevron-down"></i></a></li>
-                            </ul>
-                        </div>
-
-                        <!-- Menu Trigger -->
-
-                        <div class="menu_trigger_container ml-auto">
-                            <div class="menu_trigger d-flex flex-row align-items-center justify-content-end">
-                                <div class="menu_burger">
-                                    <div class="menu_trigger_text">menu</div>
-                                    <div class="cat_burger menu_burger_inner"><span></span><span></span><span></span></div>
                                 </div>
+
+                                <!-- Menu Trigger -->
+
+                                <div class="menu_trigger_container ml-auto">
+                                    <div class="menu_trigger d-flex flex-row align-items-center justify-content-end">
+                                        <div class="menu_burger">
+                                            <div class="menu_trigger_text">menu</div>
+                                            <div class="cat_burger menu_burger_inner">
+                                                <span></span><span></span><span></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
                             </div>
                         </div>
-
                     </div>
                 </div>
-            </div>
-        </div>
-    </nav>
-    <!-- Menu -->
+            </nav>
 
-    <div class="page_menu">
-        <div class="container">
-            <div class="row">
-                <div class="col">
+            <!-- Menu -->
 
-                    <div class="page_menu_content">
+            <div class="page_menu">
+                <div class="container">
+                    <div class="row">
+                        <div class="col">
 
-                        <div class="page_menu_search">
-                            <form action="#">
-                                <input type="search" required="required" class="page_menu_search_input"
-                                    placeholder="Search for products...">
-                            </form>
-                        </div>
-                        <ul class="page_menu_nav">
-                            <li class="page_menu_item has-children">
-                                <a href="#">Language<i class="fa fa-angle-down"></i></a>
-                                <ul class="page_menu_selection">
-                                    <li><a href="#">English<i class="fa fa-angle-down"></i></a></li>
-                                    <li><a href="#">Italian<i class="fa fa-angle-down"></i></a></li>
-                                    <li><a href="#">Spanish<i class="fa fa-angle-down"></i></a></li>
-                                    <li><a href="#">Japanese<i class="fa fa-angle-down"></i></a></li>
-                                </ul>
-                            </li>
-                            <li class="page_menu_item has-children">
-                                <a href="#">Currency<i class="fa fa-angle-down"></i></a>
-                                <ul class="page_menu_selection">
-                                    <li><a href="#">US Dollar<i class="fa fa-angle-down"></i></a></li>
-                                    <li><a href="#">EUR Euro<i class="fa fa-angle-down"></i></a></li>
-                                    <li><a href="#">GBP British Pound<i class="fa fa-angle-down"></i></a></li>
-                                    <li><a href="#">JPY Japanese Yen<i class="fa fa-angle-down"></i></a></li>
-                                </ul>
-                            </li>
-                            <li class="page_menu_item">
-                                <a href="#">Home<i class="fa fa-angle-down"></i></a>
-                            </li>
-                            <li class="page_menu_item has-children">
-                                <a href="#">Super Deals<i class="fa fa-angle-down"></i></a>
-                                <ul class="page_menu_selection">
-                                    <li><a href="#">Super Deals<i class="fa fa-angle-down"></i></a></li>
+                            <div class="page_menu_content">
+
+                                <div class="page_menu_search">
+                                    <form action="#">
+                                        <input type="search" required="required" class="page_menu_search_input"
+                                            placeholder="Search for products...">
+                                    </form>
+                                </div>
+                                <ul class="page_menu_nav">
                                     <li class="page_menu_item has-children">
-                                        <a href="#">Menu Item<i class="fa fa-angle-down"></i></a>
+                                        <a href="#">Language<i class="fa fa-angle-down"></i></a>
                                         <ul class="page_menu_selection">
-                                            <li><a href="#">Menu Item<i class="fa fa-angle-down"></i></a></li>
+                                            <li><a href="#">English<i class="fa fa-angle-down"></i></a></li>
+                                            <li><a href="#">Italian<i class="fa fa-angle-down"></i></a></li>
+                                            <li><a href="#">Spanish<i class="fa fa-angle-down"></i></a></li>
+                                            <li><a href="#">Japanese<i class="fa fa-angle-down"></i></a></li>
+                                        </ul>
+                                    </li>
+                                    <li class="page_menu_item has-children">
+                                        <a href="#">Currency<i class="fa fa-angle-down"></i></a>
+                                        <ul class="page_menu_selection">
+                                            <li><a href="#">US Dollar<i class="fa fa-angle-down"></i></a></li>
+                                            <li><a href="#">EUR Euro<i class="fa fa-angle-down"></i></a></li>
+                                            <li><a href="#">GBP British Pound<i class="fa fa-angle-down"></i></a></li>
+                                            <li><a href="#">JPY Japanese Yen<i class="fa fa-angle-down"></i></a></li>
+                                        </ul>
+                                    </li>
+                                    <li class="page_menu_item">
+                                        <a href="#">Home<i class="fa fa-angle-down"></i></a>
+                                    </li>
+                                    <li class="page_menu_item has-children">
+                                        <a href="#">Super Deals<i class="fa fa-angle-down"></i></a>
+                                        <ul class="page_menu_selection">
+                                            <li><a href="#">Super Deals<i class="fa fa-angle-down"></i></a></li>
+                                            <li class="page_menu_item has-children">
+                                                <a href="#">Menu Item<i class="fa fa-angle-down"></i></a>
+                                                <ul class="page_menu_selection">
+                                                    <li><a href="#">Menu Item<i class="fa fa-angle-down"></i></a></li>
+                                                    <li><a href="#">Menu Item<i class="fa fa-angle-down"></i></a></li>
+                                                    <li><a href="#">Menu Item<i class="fa fa-angle-down"></i></a></li>
+                                                    <li><a href="#">Menu Item<i class="fa fa-angle-down"></i></a></li>
+                                                </ul>
+                                            </li>
                                             <li><a href="#">Menu Item<i class="fa fa-angle-down"></i></a></li>
                                             <li><a href="#">Menu Item<i class="fa fa-angle-down"></i></a></li>
                                             <li><a href="#">Menu Item<i class="fa fa-angle-down"></i></a></li>
                                         </ul>
                                     </li>
-                                    <li><a href="#">Menu Item<i class="fa fa-angle-down"></i></a></li>
-                                    <li><a href="#">Menu Item<i class="fa fa-angle-down"></i></a></li>
-                                    <li><a href="#">Menu Item<i class="fa fa-angle-down"></i></a></li>
+                                    <li class="page_menu_item has-children">
+                                        <a href="#">Featured Brands<i class="fa fa-angle-down"></i></a>
+                                        <ul class="page_menu_selection">
+                                            <li><a href="#">Featured Brands<i class="fa fa-angle-down"></i></a></li>
+                                            <li><a href="#">Menu Item<i class="fa fa-angle-down"></i></a></li>
+                                            <li><a href="#">Menu Item<i class="fa fa-angle-down"></i></a></li>
+                                            <li><a href="#">Menu Item<i class="fa fa-angle-down"></i></a></li>
+                                        </ul>
+                                    </li>
+                                    <li class="page_menu_item has-children">
+                                        <a href="#">Trending Styles<i class="fa fa-angle-down"></i></a>
+                                        <ul class="page_menu_selection">
+                                            <li><a href="#">Trending Styles<i class="fa fa-angle-down"></i></a></li>
+                                            <li><a href="#">Menu Item<i class="fa fa-angle-down"></i></a></li>
+                                            <li><a href="#">Menu Item<i class="fa fa-angle-down"></i></a></li>
+                                            <li><a href="#">Menu Item<i class="fa fa-angle-down"></i></a></li>
+                                        </ul>
+                                    </li>
+                                    <li class="page_menu_item"><a href="blog.html">blog<i class="fa fa-angle-down"></i></a>
+                                    </li>
+                                    <li class="page_menu_item"><a href="contact.html">contact<i
+                                                class="fa fa-angle-down"></i></a></li>
                                 </ul>
-                            </li>
-                            <li class="page_menu_item has-children">
-                                <a href="#">Featured Brands<i class="fa fa-angle-down"></i></a>
-                                <ul class="page_menu_selection">
-                                    <li><a href="#">Featured Brands<i class="fa fa-angle-down"></i></a></li>
-                                    <li><a href="#">Menu Item<i class="fa fa-angle-down"></i></a></li>
-                                    <li><a href="#">Menu Item<i class="fa fa-angle-down"></i></a></li>
-                                    <li><a href="#">Menu Item<i class="fa fa-angle-down"></i></a></li>
-                                </ul>
-                            </li>
-                            <li class="page_menu_item has-children">
-                                <a href="#">Trending Styles<i class="fa fa-angle-down"></i></a>
-                                <ul class="page_menu_selection">
-                                    <li><a href="#">Trending Styles<i class="fa fa-angle-down"></i></a></li>
-                                    <li><a href="#">Menu Item<i class="fa fa-angle-down"></i></a></li>
-                                    <li><a href="#">Menu Item<i class="fa fa-angle-down"></i></a></li>
-                                    <li><a href="#">Menu Item<i class="fa fa-angle-down"></i></a></li>
-                                </ul>
-                            </li>
-                            <li class="page_menu_item"><a href="blog.html">blog<i class="fa fa-angle-down"></i></a></li>
-                            <li class="page_menu_item"><a href="contact.html">contact<i class="fa fa-angle-down"></i></a>
-                            </li>
-                        </ul>
 
-                        <div class="menu_contact">
-                            <div class="menu_contact_item">
-                                <div class="menu_contact_icon"><img src="{{ asset('frontend/images/phone_white.png') }}"
-                                        alt=""></div>
-                                +38 068 005 3570
-                            </div>
-                            <div class="menu_contact_item">
-                                <div class="menu_contact_icon"><img src="{{ asset('frontend/images/mail_white.png') }}"
-                                        alt=""></div><a href="mailto:fastsales@gmail.com">fastsales@gmail.com</a>
+                                <div class="menu_contact">
+                                    <div class="menu_contact_item">
+                                        <div class="menu_contact_icon"><img src="images/phone_white.png" alt=""></div>
+                                        +38 068 005 3570
+                                    </div>
+                                    <div class="menu_contact_item">
+                                        <div class="menu_contact_icon"><img src="images/mail_white.png" alt=""></div><a
+                                            href="mailto:fastsales@gmail.com">fastsales@gmail.com</a>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </div>
 
-    <!-- Banner -->
+        </header>
 
-    <div class="banner">
-        <div class="banner_background" style="background-image:url({{ asset('frontend/images/banner_background.jpg') }})">
-        </div>
-        <div class="container fill_height">
-            <div class="row fill_height">
-                <div class="banner_product_image"><img src="{{ asset('frontend/images/banner_product.png') }}" alt="">
-                </div>
+        <!-- Banner -->
+
+        <div class="banner">
+            <div class="banner_background"
+                style="background-image:url({{ asset(`frontend/images/banner_background.jpg`) }})"></div>
+            <div class="container fill_height">
+                <div class="row fill_height">
+                     <div class="banner_product_image"><img class="rounded" style="width: 400px;" src="{{ asset($main_slider->first_image) }}"
+                            alt="{{ $main_slider->product_name }} Image">
+                    </div>
                 <div class="col-lg-5 offset-lg-4 fill_height">
                     <div class="banner_content">
-                        <h1 class="banner_text">new era of smartphones</h1>
-                        <div class="banner_price"><span>$530</span>$460</div>
-                        <div class="banner_product_name">Apple Iphone 6s</div>
+                        <h1 class="banner_text">{{ $main_slider->product_name }}</h1>
+                        <div class="banner_price">
+                            @if($main_slider->discount_price === NULL)
+                                &#8358; {{ number_format($main_slider->selling_price, 3, ',', ',') }}
+                            @else
+                                <span>&#8358; {{ number_format($main_slider->selling_price, 3, ',', ',') }}</span> &#8358; {{ number_format($main_slider->discount_price, 3, ',', ',') }}
+                            @endif
+                        </div>
+                        <div class="banner_product_name">{{ $main_slider->brand['brand_name'] }} Brand</div>
                         <div class="button banner_button"><a href="#">Shop Now</a></div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-
-    <!-- Characteristics -->
-
     <div class="characteristics">
         <div class="container">
             <div class="row">
@@ -4828,7 +4851,8 @@
                             </div>
                         </div>
                         <div class="ml-auto">
-                            <div class="advert_image"><img src="{{ asset('frontend/images/adv_1.png') }}" alt=""></div>
+                            <div class="advert_image"><img src="{{ asset('frontend/images/adv_1.png') }}" alt="">
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -4844,7 +4868,8 @@
                             <div class="advert_text">Lorem ipsum dolor sit amet, consectetur.</div>
                         </div>
                         <div class="ml-auto">
-                            <div class="advert_image"><img src="{{ asset('frontend/images/adv_2.png') }}" alt=""></div>
+                            <div class="advert_image"><img src="{{ asset('frontend/images/adv_2.png') }}" alt="">
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -4859,7 +4884,8 @@
                             <div class="advert_text">Lorem ipsum dolor sit amet, consectetur.</div>
                         </div>
                         <div class="ml-auto">
-                            <div class="advert_image"><img src="{{ asset('frontend/images/adv_3.png') }}" alt=""></div>
+                            <div class="advert_image"><img src="{{ asset('frontend/images/adv_3.png') }}" alt="">
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -5338,38 +5364,14 @@
 
                         <div class="owl-carousel owl-theme brands_slider">
 
-                            <div class="owl-item">
-                                <div class="brands_item d-flex flex-column justify-content-center"><img
-                                        src="{{ asset('frontend/images/brands_1.jpg') }}" alt=""></div>
-                            </div>
-                            <div class="owl-item">
-                                <div class="brands_item d-flex flex-column justify-content-center"><img
-                                        src="{{ asset('frontend/images/brands_2.jpg') }}" alt=""></div>
-                            </div>
-                            <div class="owl-item">
-                                <div class="brands_item d-flex flex-column justify-content-center"><img
-                                        src="{{ asset('frontend/images/brands_3.jpg') }}" alt=""></div>
-                            </div>
-                            <div class="owl-item">
-                                <div class="brands_item d-flex flex-column justify-content-center"><img
-                                        src="{{ asset('frontend/images/brands_4.jpg') }}" alt=""></div>
-                            </div>
-                            <div class="owl-item">
-                                <div class="brands_item d-flex flex-column justify-content-center"><img
-                                        src="{{ asset('frontend/images/brands_5.jpg') }}" alt=""></div>
-                            </div>
-                            <div class="owl-item">
-                                <div class="brands_item d-flex flex-column justify-content-center"><img
-                                        src="{{ asset('frontend/images/brands_6.jpg') }}" alt=""></div>
-                            </div>
-                            <div class="owl-item">
-                                <div class="brands_item d-flex flex-column justify-content-center"><img
-                                        src="{{ asset('frontend/images/brands_7.jpg') }}" alt=""></div>
-                            </div>
-                            <div class="owl-item">
-                                <div class="brands_item d-flex flex-column justify-content-center"><img
-                                        src="{{ asset('frontend/images/brands_8.jpg') }}" alt=""></div>
-                            </div>
+                            @forelse ($brands as $brand)
+                                    <div class="owl-item">
+                                        <div class="brands_item d-flex flex-column justify-content-center">
+                                            <img src="{{ $brand->brand_image }}" style="width: 70px;" alt="{{ $brand->brand_name }} Official Image"></div>
+                                    </div>
+                            @empty
+                                No brand :(
+                            @endforelse
 
                         </div>
 
@@ -5420,5 +5422,114 @@
                 </div>
             </div>
         </div>
+    </div>
+    <!-- Footer -->
+
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+
+                <div class="col-lg-3 footer_col">
+                    <div class="footer_column footer_contact">
+                        <div class="logo_container">
+                            <div class="logo"><a href="#">OneTech</a></div>
+                        </div>
+                        <div class="footer_title">Got Question? Call Us 24/7</div>
+                        <div class="footer_phone">+38 068 005 3570</div>
+                        <div class="footer_contact_text">
+                            <p>17 Princess Road, London</p>
+                            <p>Grester London NW18JR, UK</p>
+                        </div>
+                        <div class="footer_social">
+                            <ul>
+                                <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+                                <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+                                <li><a href="#"><i class="fab fa-youtube"></i></a></li>
+                                <li><a href="#"><i class="fab fa-google"></i></a></li>
+                                <li><a href="#"><i class="fab fa-vimeo-v"></i></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-2 offset-lg-2">
+                    <div class="footer_column">
+                        <div class="footer_title">Find it Fast</div>
+                        <ul class="footer_list">
+                            <li><a href="#">Computers & Laptops</a></li>
+                            <li><a href="#">Cameras & Photos</a></li>
+                            <li><a href="#">Hardware</a></li>
+                            <li><a href="#">Smartphones & Tablets</a></li>
+                            <li><a href="#">TV & Audio</a></li>
+                        </ul>
+                        <div class="footer_subtitle">Gadgets</div>
+                        <ul class="footer_list">
+                            <li><a href="#">Car Electronics</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="col-lg-2">
+                    <div class="footer_column">
+                        <ul class="footer_list footer_list_2">
+                            <li><a href="#">Video Games & Consoles</a></li>
+                            <li><a href="#">Accessories</a></li>
+                            <li><a href="#">Cameras & Photos</a></li>
+                            <li><a href="#">Hardware</a></li>
+                            <li><a href="#">Computers & Laptops</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="col-lg-2">
+                    <div class="footer_column">
+                        <div class="footer_title">Customer Care</div>
+                        <ul class="footer_list">
+                            <li><a href="#">My Account</a></li>
+                            <li><a href="#">Order Tracking</a></li>
+                            <li><a href="#">Wish List</a></li>
+                            <li><a href="#">Customer Services</a></li>
+                            <li><a href="#">Returns / Exchange</a></li>
+                            <li><a href="#">FAQs</a></li>
+                            <li><a href="#">Product Support</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </footer>
+
+    <!-- Copyright -->
+
+    <div class="copyright">
+        <div class="container">
+            <div class="row">
+                <div class="col">
+
+                    <div
+                        class="copyright_container d-flex flex-sm-row flex-column align-items-center justify-content-start">
+                        <div class="copyright_content">
+                            <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                            Copyright &copy;<script>
+                                document.write(new Date().getFullYear());
+
+                            </script> All rights reserved | This template is made with <i class="fa fa-heart"
+                                aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+                            <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                        </div>
+                        <div class="logos ml-sm-auto">
+                            <ul class="logos_list">
+                                <li><a href="#"><img src="images/logos_1.png" alt=""></a></li>
+                                <li><a href="#"><img src="images/logos_2.png" alt=""></a></li>
+                                <li><a href="#"><img src="images/logos_3.png" alt=""></a></li>
+                                <li><a href="#"><img src="images/logos_4.png" alt=""></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
     </div>
 @endsection

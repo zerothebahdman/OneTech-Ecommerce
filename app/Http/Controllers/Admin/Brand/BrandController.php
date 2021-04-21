@@ -28,7 +28,7 @@ class BrandController extends Controller
         $brand_image = $request->file('brand_image');
 
         $gen_name = hexdec(uniqid()).'.'.$brand_image->getClientOriginalExtension();
-        Image::make($brand_image)->resize('100', '100')->save('backend/img/brands/'.$gen_name);
+        Image::make($brand_image)->resize('200', '100')->save('backend/img/brands/'.$gen_name);
 
         $saveToDatabase = 'backend/img/brands/'.$gen_name;
 
@@ -39,7 +39,7 @@ class BrandController extends Controller
             'created_at' => Carbon::now()
         ]);
 
-        return back()->with('success', 'Brand created successfully');
+        return back()->with('success', $request['brand_name'] . ' created successfully');
     }
 
     public function edit($slug)
@@ -62,7 +62,7 @@ class BrandController extends Controller
         // If brand exists in the form request then update else skip brand image
         if ($brand_image) {
             $gen_name = hexdec(uniqid()).'.'.$brand_image->getClientOriginalExtension();
-            Image::make($brand_image)->resize('100', '100')->save('backend/img/brands/'.$gen_name);
+            Image::make($brand_image)->resize('200', '100')->save('backend/img/brands/'.$gen_name);
 
             $saveToDatabase = 'backend/img/brands/'.$gen_name;
 
@@ -74,18 +74,18 @@ class BrandController extends Controller
                 'slug' => SlugService::createSlug(Brand::class, 'slug', $request->brand_name),
             ]);
 
-            return redirect()->route('admin.brand.index')->with('success', 'Brand Updated Successfully');
+            return redirect()->route('admin.brand.index')->with('success', $request['brand_name'] . ' Updated Successfully');
         }else {
             Brand::where('slug', $slug)->update([
                 'brand_name' => $request['brand_name'],
                 'slug' => SlugService::createSlug(Brand::class, 'slug', $request->brand_name),
             ]);
 
-            return redirect()->route('admin.brand.index')->with('success', 'Brand Updated Successfully');
+            return redirect()->route('admin.brand.index')->with('success', $request['brand_name'] . ' Updated Successfully');
         }
     }
 
-    public function destroy($slug)
+    public function destroy($slug): \Illuminate\Http\RedirectResponse
     {
         $brand = Brand::where('slug', $slug)->first();
 

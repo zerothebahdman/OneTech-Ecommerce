@@ -20,9 +20,7 @@ use App\Http\Controllers\Backend\AdminController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-})->name('welcome');
+Route::get('/', [\App\Http\Controllers\Frontend\FrontendController::class, 'index'])->name('welcome');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
@@ -95,7 +93,6 @@ Route::prefix('/admin/')->name('admin.')->group(function () {
         Route::get('products/inactive/{slug}', [ProductsController::class, 'inactiveStatus'])->name('products.inactive');
         Route::get('products/active/{slug}', [ProductsController::class, 'activeStatus'])->name('products.active');
         Route::get('products/details/{slug}', [ProductsController::class, 'productDetails'])->name('products.details');
-
         // show all  sub categories with ajax
         Route::get('products/subcategory/{category_id}', [ProductsController::class, 'getSubCat']);
     });

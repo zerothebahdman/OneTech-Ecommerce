@@ -117,11 +117,11 @@ p a:hover::after
 }
 ::selection
 {
-	
+
 }
 p::selection
 {
-	
+
 }
 h1{font-size: 48px;}
 h2{font-size: 36px;}
@@ -136,14 +136,14 @@ h1, h2, h3, h4, h5, h6
 	-webkit-text-shadow: rgba(0,0,0,.01) 0 0 1px;
 	text-shadow: rgba(0,0,0,.01) 0 0 1px;
 }
-h1::selection, 
-h2::selection, 
-h3::selection, 
-h4::selection, 
-h5::selection, 
+h1::selection,
+h2::selection,
+h3::selection,
+h4::selection,
+h5::selection,
 h6::selection
 {
-	
+
 }
 .form-control
 {
@@ -580,15 +580,15 @@ section
 	line-height: 50px;
 	color: #a3a3a3 !important;
 }
-.header_search_input::-moz-placeholder /* Firefox 19+ */ 
+.header_search_input::-moz-placeholder /* Firefox 19+ */
 {
 	font-size: 16px !important;
 	font-weight: 300;
 	line-height: 50px;
 	color: #a3a3a3 !important;
-} 
+}
 .header_search_input:-ms-input-placeholder
-{ 
+{
 	font-size: 16px !important;
 	font-weight: 300;
 	line-height: 50px;
@@ -647,7 +647,7 @@ section
 }
 .custom_dropdown_placeholder i
 {
-	
+
 }
 .custom_list
 {
@@ -658,6 +658,7 @@ section
 	left: -15px;
 	visibility: hidden;
 	opacity: 0;
+    width: 15rem !important;
 	box-shadow: 0 0 25px rgba(63, 78, 100, 0.15);
 	-webkit-transition: opacity 0.2s ease;
 	-moz-transition: opacity 0.2s ease;
@@ -859,7 +860,7 @@ select option
 }
 .cat_menu_container
 {
-	width: 293px;
+	width: 280px;
 	height: 100%;
 	background: #0e8ce4;
 	padding-left: 35px;
@@ -909,6 +910,7 @@ select option
 	/*visibility: hidden;
 	opacity: 0;*/
 	min-width: 100%;
+    width: 15rem;
 	background: #FFFFFF;
 	box-shadow: 0px 10px 25px rgba(0,0,0,0.1);
 	-webkit-transition: opacity 0.3s ease;
@@ -1008,6 +1010,7 @@ select option
 .main_nav_dropdown li li
 {
 	padding-left: 15px;
+    width: 15rem !important;
 	padding-right: 15px;
 	margin-right: 0px;
 }
@@ -1700,7 +1703,7 @@ select option
 .product_name div
 {
 	width: 100%;
-	
+
 }
 .product_name div a
 {
@@ -1984,7 +1987,7 @@ select option
 {
 	display: inline-block;
 	visibility: visible;
-	opacity: 1;	
+	opacity: 1;
 }
 
 /*********************************
@@ -2422,7 +2425,7 @@ select option
 {
 	margin-top: 9px;
 }
-.arrivals_single_marks 
+.arrivals_single_marks
 {
 	display: block;
 	position: absolute;
@@ -3457,9 +3460,9 @@ select option
 {
 	font-size: 16px;
 	color: rgba(0,0,0,0.3);
-} 
+}
 .newsletter_input:-ms-input-placeholder
-{ 
+{
 	font-size: 16px;
 	color: rgba(0,0,0,0.3);
 }
@@ -3622,7 +3625,7 @@ select option
 }
 .footer_list_2
 {
-	margin-top: 42px !important; 
+	margin-top: 42px !important;
 }
 
 .copyright
@@ -3646,7 +3649,7 @@ select option
 }
 .logos
 {
-	
+
 }
 .logos_list li
 {

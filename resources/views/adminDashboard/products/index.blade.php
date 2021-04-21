@@ -91,13 +91,14 @@
                                                     <div class="form-group col-md-3">
                                                         <label for="quantity">Product Quantity <span
                                                                 style="color: red;">*</span></label>
-                                                        <input type="number" value="{{ old('product_quantity') }}" name="product_quantity"
-                                                            class="form-control form-control-lg" id="quantity"
-                                                            placeholder="Product Quantity">
+                                                        <input type="number" value="{{ old('product_quantity') }}"
+                                                            name="product_quantity" class="form-control form-control-lg"
+                                                            id="quantity" placeholder="Product Quantity">
                                                     </div>
                                                     <div class="col-md-5">
                                                         <label for="size">Product Color </label>
-                                                        <input type="text" value="{{ old('product_color') }}" data-role="tagsinput" name="product_color"
+                                                        <input type="text" value="{{ old('product_color') }}"
+                                                            data-role="tagsinput" name="product_color"
                                                             class="form-control form-control-lg">
                                                         @error('product_color')
                                                             <span class="text-danger">{{ $message }}</span>
@@ -108,7 +109,8 @@
                                                     <div class="form-group col-md-4">
                                                         <label for="selling">Selling Price <span
                                                                 style="color: red;">*</span></label>
-                                                        <input type="number" value="{{ old('selling_price') }}" required name="selling_price"
+                                                        <input type="number" value="{{ old('selling_price') }}" required
+                                                            name="selling_price"
                                                             class="form-control form-control-lg @error('selling_price')is-invalid @enderror"
                                                             placeholder="Selling Price">
                                                         @error('selling_price')
@@ -117,7 +119,8 @@
                                                     </div>
                                                     <div class="form-group col-md-4">
                                                         <label for="discount">Discount Price</label>
-                                                        <input type="number" value="{{ old('discount_price') }}" name="discount_price"
+                                                        <input type="number" value="{{ old('discount_price') }}"
+                                                            name="discount_price"
                                                             class="form-control form-control-lg @error('discount_price')is-invalid @enderror"
                                                             placeholder="Discount Price">
                                                         @error('discount_price')
@@ -126,7 +129,8 @@
                                                     </div>
                                                     <div class="form-group col-md-4">
                                                         <label for="color">Product Size</label>
-                                                        <input type="text" data-role="tagsinput" value="{{ old('product_size') }}" name="product_size"
+                                                        <input type="text" data-role="tagsinput"
+                                                            value="{{ old('product_size') }}" name="product_size"
                                                             class="form-control form-control-lg">
                                                         @error('product_size')
                                                             <span class="text-danger">{{ $message }}</span>
@@ -138,7 +142,9 @@
                                                     <!-- Create the editor container -->
                                                     <label for="editor">Product Description <span
                                                             class="text-danger">*</span></label>
-                                                    <textarea name="product_details" id="editor" class="@error('product_details')is-invalid @enderror" placeholder="Write down product details">{{ old('product_details') }}</textarea>
+                                                    <textarea name="product_details" id="editor"
+                                                        class="@error('product_details')is-invalid @enderror"
+                                                        placeholder="Write down product details">{{ old('product_details') }}</textarea>
                                                     @error('product_details')
                                                         <span class="text-danger">{{ $message }}</span>
                                                     @enderror
@@ -148,14 +154,16 @@
                                                 <div class="form-row">
                                                     <div class="form-group col-md-3">
                                                         <label for="">Video Link</label>
-                                                        <input type="text" value="{{ old('video_link') }}" name="video_link"
+                                                        <input type="text" value="{{ old('video_link') }}"
+                                                            name="video_link"
                                                             class="form-control form-control-lg @error('video_link')is-invalid @enderror"
                                                             placeholder="Specify product video link">
                                                     </div>
                                                     <div class="form-group col-md-3">
                                                         <label for="first_image">Image One (Main Thumbnail) <span
                                                                 class="text-danger">*</span></label>
-                                                        <input type="file" value="{{ old('first_image') }}" name="first_image"
+                                                        <input type="file" value="{{ old('first_image') }}"
+                                                            name="first_image"
                                                             class="form-control form-control-lg @error('first_image')is-invalid @enderror"
                                                             onchange="readURL1(this);">
                                                         @error('first_image')
@@ -164,8 +172,10 @@
                                                         <img src="#" id="one" alt="" class="mt-3">
                                                     </div>
                                                     <div class="form-group col-md-3">
-                                                        <label for="second_image">Image Two <span class="text-danger">*</span></label>
-                                                        <input type="file" name="second_image" value="{{ old('second_image') }}" id="second_image"
+                                                        <label for="second_image">Image Two <span
+                                                                class="text-danger">*</span></label>
+                                                        <input type="file" name="second_image"
+                                                            value="{{ old('second_image') }}" id="second_image"
                                                             class="form-control form-control-lg @error('second_image')is-invalid @enderror"
                                                             onchange="readURL2(this);">
                                                         @error('second_image')
@@ -174,8 +184,10 @@
                                                         <img src="#" id="two" class="mt-3" alt="">
                                                     </div>
                                                     <div class="form-group col-md-3">
-                                                        <label for="third_image">Image Three <span class="text-danger">*</span></label>
-                                                        <input type="file" value="{{ old('third_image') }}" name="third_image" id="third_image"
+                                                        <label for="third_image">Image Three <span
+                                                                class="text-danger">*</span></label>
+                                                        <input type="file" value="{{ old('third_image') }}"
+                                                            name="third_image" id="third_image"
                                                             class="form-control form-control-lg @error('third_image')is-invalid @enderror"
                                                             onchange="readURL3(this);">
                                                         @error('third_image')
@@ -252,64 +264,69 @@
                         <div class="card-body">
                             <table id="datatables-reponsive" class="table table-striped" style="width:100%">
                                 <thead>
-                                <tr>
-                                    <th>Code</th>
-                                    <th>Category</th>
-                                    <th>SubCategory</th>
-                                    <th>Product</th>
-                                    <th>Image</th>
-                                    <th>Price</th>
-                                    <th>Quantity</th>
-                                    <th>Status</th>
-                                    <th>Action</th>
-                                </tr>
+                                    <tr>
+                                        <th>Code</th>
+                                        <th>Product</th>
+                                        <th>Category</th>
+                                        <th>SubCategory</th>
+                                        <th>Price(&#8358;)</th>
+                                        <th>Quantity</th>
+                                        <th>Status</th>
+                                        <th>Action</th>
+                                    </tr>
                                 </thead>
                                 <tbody>
-                                @foreach ($products as $product)
-                                    <tr>
-                                        <td>{{ $product->product_code }}</td>
-                                        <td>{{ $product->category->category_name }}</td>
-                                        <td>{{ $product->subCategory->sub_category_name }}</td>
-                                        <td>{{ $product->product_name }}</td>
-                                        <td><img src="{{ asset($product->first_image) }}" style="width: 40px; height: 40px" /></td>
-                                        <td>&#8358; {{ $product->selling_price }}</td>
-{{--                                        <td>{{ Str::limit($product->product_details, 20)  }}</td>--}}
-                                        <td>{{ $product->product_quantity }}</td>
-                                        <td>
-                                            @if($product->status !== 1)
-                                                <span class="badge badge-danger">Unavailable</span>
-                                            @else
-                                                <span class="badge badge-info">Available</span>
-                                            @endif
-                                        </td>
-                                        <td>
-                                            <a href="{{ route('admin.products.edit', $product->slug) }}"
-                                               class="btn btn-outline-primary mt-2" title="Edit Product">
-                                                <i class="align-left mr-1 mb-1" data-feather="edit-2"></i>
-                                            </a>
+                                    @foreach ($products as $product)
+                                        <tr>
+                                            <td>
+                                                <img src="{{ asset($product->first_image) }}"
+                                                    style="width: 38px; height: 40px" class="rounded mr-2" />
+                                                {{ $product->product_code }}
+                                            </td>
+                                            <td>
+                                                {{ $product->product_name }}
+                                            </td>
+                                            <td>{{ $product->category->category_name }}</td>
+                                            <td>{{ $product->subCategory->sub_category_name }}</td>
+                                            <td>{{ number_format($product->selling_price, 3, ',', ',') }}</td>
+                                            {{-- <td>{{ Str::limit($product->product_details, 20)  }}</td> --}}
+                                            <td>{{ $product->product_quantity }}</td>
+                                            <td>
+                                                @if ($product->status !== 1)
+                                                    <span class="badge badge-danger">Unavailable</span>
+                                                @else
+                                                    <span class="badge badge-info">Available</span>
+                                                @endif
+                                            </td>
+                                            <td>
+                                                <a href="{{ route('admin.products.edit', $product->slug) }}"
+                                                    class="btn btn-outline-primary mt-2" title="Edit Product">
+                                                    <i class="align-left mr-1 mb-1" data-feather="edit-2"></i>
+                                                </a>
 
-                                            <a href="{{ route('admin.products.delete', $product->slug) }}"
-                                               class="btn btn-outline-danger mt-2" title="Delete Product" id="delete">
-                                                <i class="align-left mr-1 mb-1" data-feather="trash-2"></i>
-                                            </a>
-                                            <a href="{{ route('admin.products.details', $product->slug) }}"
-                                               class="btn btn-outline-info mt-2" title="Show Product">
-                                                <i class="align-left mr-1 mb-1" data-feather="eye"></i>
-                                            </a>
-                                            @if($product->status !== 1)
-                                                <a href="{{ route('admin.products.active', $product->slug) }}"
-                                                   class="btn btn-outline-success mt-2" title="Make product available">
-                                                    <i class="align-left mr-1 mb-1" data-feather="thumbs-up"></i>
+                                                <a href="{{ route('admin.products.delete', $product->slug) }}"
+                                                    class="btn btn-outline-danger mt-2" title="Delete Product" id="delete">
+                                                    <i class="align-left mr-1 mb-1" data-feather="trash-2"></i>
                                                 </a>
-                                            @else
-                                                <a href="{{ route('admin.products.inactive', $product->slug) }}"
-                                                   class="btn btn-outline-warning mt-2" title="Make Product Unavailable">
-                                                    <i class="align-left mr-1 mb-1" data-feather="thumbs-down"></i>
+                                                <a href="{{ route('admin.products.details', $product->slug) }}"
+                                                    class="btn btn-outline-info mt-2" title="Show Product">
+                                                    <i class="align-left mr-1 mb-1" data-feather="eye"></i>
                                                 </a>
-                                            @endif
-                                        </td>
-                                    </tr>
-                                @endforeach
+                                                @if ($product->status !== 1)
+                                                    <a href="{{ route('admin.products.active', $product->slug) }}"
+                                                        class="btn btn-outline-success mt-2" title="Make product available">
+                                                        <i class="align-left mr-1 mb-1" data-feather="thumbs-up"></i>
+                                                    </a>
+                                                @else
+                                                    <a href="{{ route('admin.products.inactive', $product->slug) }}"
+                                                        class="btn btn-outline-warning mt-2"
+                                                        title="Make Product Unavailable">
+                                                        <i class="align-left mr-1 mb-1" data-feather="thumbs-down"></i>
+                                                    </a>
+                                                @endif
+                                            </td>
+                                        </tr>
+                                    @endforeach
                                 </tbody>
                             </table>
                         </div>
@@ -324,10 +341,11 @@
         <script src="https://cdn.ckeditor.com/ckeditor5/27.0.0/classic/ckeditor.js"></script>
         <script>
             ClassicEditor
-                .create( document.querySelector( '#editor' ) )
-                .catch( error => {
-                    console.error( error );
-                } );
+                .create(document.querySelector('#editor'))
+                .catch(error => {
+                    console.error(error);
+                });
+
         </script>
         {{-- This is used to preview an image selected by the user --}}
         <script type="text/javascript">
