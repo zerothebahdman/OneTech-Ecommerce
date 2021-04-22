@@ -16,11 +16,12 @@ class FrontendController extends Controller
 
         $main_slider = Product::with('brand')->where('main_slider', 1)->latest()->first();
         $mid_slider = Product::with('brand')->where('mid_slider', 1)->latest()->first();
-        $trending = Product::with('brand')->where('trending', 1)->latest()->first();
-        $best_rated = Product::with('brand')->where('best_rated', 1)->latest()->first();
+        $trending = Product::with('brand')->where('trending', 1)->latest()->paginate(16);
+        $featured = Product::with('brand')->where('status', 1)->latest()->paginate(16);
+        $best_rated = Product::with('brand')->where('best_rated', 1)->latest()->paginate(16);
         $hot_deals = Product::with('brand')->where('hot_deals', 1)->latest()->first();
         $hot_new = Product::with('brand')->where('hot_new', 1)->latest()->first();
 
-        return view('welcome', compact('categories', 'main_slider', 'brands', 'mid_slider', 'hot_deals', 'best_rated', 'trending', 'hot_new'));
+        return view('welcome', compact('categories', 'main_slider', 'brands', 'mid_slider', 'hot_deals', 'best_rated', 'trending', 'hot_new', 'featured'));
     }
 }

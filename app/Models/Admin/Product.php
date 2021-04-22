@@ -47,4 +47,14 @@ class Product extends Model
     {
          return $this->belongsTo(Brand::class);
     }
+
+    public function getProductSellingPriceAttribute($value)
+    {
+        return number_format($this->selling_price, 3, ',', ',');
+    }
+
+    public function getProductDiscountPriceAttribute($value)
+    {
+        return number_format($this->discount_price, 3, ',', ',');
+    }
 }
