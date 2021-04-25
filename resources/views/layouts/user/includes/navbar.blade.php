@@ -32,8 +32,13 @@
                         </ul>
                     </div>
                     <div class="top_bar_user">
-                        <div class="user_icon"><img src="{{ asset('frontend/images/user.svg') }}" alt="">
-                        </div>
+                        @if (is_null(Auth::user()->profile_photo))
+                            <div class="user_icon"><img src="{{ asset('frontend/images/user.svg') }}" alt="">
+                            </div>
+                        @else
+                            <img src="{{ asset(Auth::user()->profile_photo) }}" style="width: 35px;"
+                                class="rounded rounded-circle" alt="">
+                        @endif
                         @if (Route::has('login'))
                             @auth
                                 <a href="{{ route('user.dashboard') }}" class="text-sm text-gray-700 underline">HI,
@@ -64,7 +69,7 @@
             <!-- Logo -->
             <div class="col-lg-2 col-sm-3 col-3 order-1">
                 <div class="logo_container">
-                    <div class="logo"><a href="#">OneTech</a></div>
+                    <div class="logo"><a href="{{ route('welcome') }}">OneTech</a></div>
                 </div>
             </div>
 
@@ -81,11 +86,11 @@
                                         <span class="custom_dropdown_placeholder clc">All Categories</span>
                                         <i class="fas fa-chevron-down"></i>
                                         <ul class="custom_list clc">
-                                            @foreach ($categories as $category)
-                                                <li><a class="clc" href="#">{{ $category->category_name }}</a>
-                                                </li>
+                                            {{-- @foreach ($categories as $category)
+                                                    <li><a class="clc" href="#">{{ $category->category_name }}</a>
+                                                    </li>
 
-                                            @endforeach
+                                                @endforeach --}}
                                         </ul>
                                     </div>
                                 </div>

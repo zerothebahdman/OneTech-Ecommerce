@@ -1,5 +1,5 @@
-@extends('layouts.backend.dashboard')
-@section('title', 'OneTech Ecommerce | Admin Dashbaord')
+@extends('layouts.user.dashboard')
+@section('title', 'OneTech Ecommerce | User Dashbaord')
 @section('dashboard')
 
 
@@ -20,7 +20,8 @@
                                 <div class="col-6">
                                     <div class="illustration-text p-3 m-1">
                                         <h4 class="illustration-text">Welcome, {{ Auth::user()->name }}</h4>
-                                        <p class="mb-0">OneTech Dashboard</p>
+                                        <p class="mb-0">Here you will find all your relevant information
+                                        </p>
                                     </div>
                                 </div>
                                 <div class="col-6 align-self-end text-right">
@@ -100,67 +101,210 @@
             </div>
 
             <div class="row">
-                <div class="col-12 col-lg-8 d-flex">
-                    <div class="card flex-fill w-100">
+                <div class="col-xl-8">
+                    <div class="card">
                         <div class="card-header">
+                            <div class="card-actions float-right">
+                                <div class="dropdown show">
+                                    <a href="#" data-toggle="dropdown" data-display="static">
+                                        <i class="align-middle" data-feather="more-horizontal"></i>
+                                    </a>
 
-                            <h5 class="card-title mb-0">Sales / Revenue</h5>
-                        </div>
-                        <div class="card-body d-flex w-100">
-
-                        </div>
-                    </div>
-                </div>
-                <div class="col-12 col-lg-4 d-flex">
-                    <div class="card flex-fill w-100">
-                        <div class="card-header">
-                            <span class="badge badge-info float-right">Today</span>
-                            <h5 class="card-title mb-0">Daily feed</h5>
-                        </div>
-                        <div class="card-body">
-                            <div class="media">
-                                <img src="img/avatars/avatar-5.jpg" width="36" height="36" class="rounded-circle mr-2"
-                                    alt="Ashley Briggs">
-                                <div class="media-body">
-                                    <small class="float-right text-navy">5m ago</small>
-                                    <strong>Ashley Briggs</strong> started following <strong>Stacie
-                                        Hall</strong><br />
-                                    <small class="text-muted">Today 7:51 pm</small><br />
-
-                                </div>
-                            </div>
-
-                            <hr />
-                            <div class="media">
-                                <img src="img/avatars/avatar.jpg" width="36" height="36" class="rounded-circle mr-2"
-                                    alt="Chris Wood">
-                                <div class="media-body">
-                                    <small class="float-right text-navy">30m ago</small>
-                                    <strong>Chris Wood</strong> posted something on <strong>Stacie Hall</strong>'s
-                                    timeline<br />
-                                    <small class="text-muted">Today 7:21 pm</small>
-
-                                    <div class="border text-sm text-muted p-2 mt-1">
-                                        Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam
-                                        semper libero, sit amet adipiscing...
+                                    <div class="dropdown-menu dropdown-menu-right">
+                                        <a class="dropdown-item" href="#">Action</a>
+                                        <a class="dropdown-item" href="#">Another action</a>
+                                        <a class="dropdown-item" href="#">Something else here</a>
                                     </div>
                                 </div>
                             </div>
+                            <h5 class="card-title mb-0">Clients</h5>
+                        </div>
+                        <div class="card-body">
+                            <table id="datatables-reponsive" class="table table-striped" style="width:100%">
+                                <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>Name</th>
+                                        <th>Company</th>
+                                        <th>Email</th>
+                                        <th>Status</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><img src="{{ asset('backend/img/avatars/avatar-5.jpg') }}" width="32"
+                                                height="32" class="rounded-circle my-n1" alt="Avatar"></td>
+                                        <td>Unity Butler</td>
+                                        <td>Price Savers</td>
+                                        <td>unity@butler.com</td>
+                                        <td><span class="badge badge-warning">Inactive</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td><img src="{{ asset('backend/img/avatars/avatar-5.jpg') }}" width="32"
+                                                height="32" class="rounded-circle my-n1" alt="Avatar"></td>
+                                        <td>Howard Hatfield</td>
+                                        <td>Price Savers</td>
+                                        <td>howard@hatfield.com</td>
+                                        <td><span class="badge badge-warning">Inactive</span></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
 
-                            <hr />
-                            <div class="media">
-                                <img src="img/avatars/avatar-4.jpg" width="36" height="36" class="rounded-circle mr-2"
-                                    alt="Stacie Hall">
-                                <div class="media-body">
-                                    <small class="float-right text-navy">1h ago</small>
-                                    <strong>Stacie Hall</strong> posted a new blog<br />
-
-                                    <small class="text-muted">Today 6:35 pm</small>
+                <div class="col-xl-4">
+                    <div class="card">
+                        <div class="card-header">
+                            <div class="card-actions float-right">
+                                <div class="dropdown show">
+                                    <a href="#" data-toggle="dropdown" data-display="static">
+                                        <i class="align-middle" data-feather="more-horizontal"></i>
+                                    </a>
+                                </div>
+                            </div>
+                            <h5 class="card-title mb-0">{{ Auth::user()->name }}</h5>
+                        </div>
+                        <div class="card-body">
+                            <div class="row no-gutters">
+                                <div class="col-sm-3 col-xl-12 col-xxl-3 text-center">
+                                    @if (is_null(Auth::user()->profile_photo))
+                                        <img src="{{ asset('backend/img/avatars/avatar-7.png') }}" width="64" height="64"
+                                            class="rounded-circle mt-2" alt="{{ auth()->user()->name }} Profile Photo">
+                                    @else
+                                        <img src="{{ asset(Auth::user()->profile_photo) }}" width="64" height="64"
+                                            class="rounded-circle mt-2" alt="{{ auth()->user()->name }} Profile Photo">
+                                    @endif
                                 </div>
                             </div>
 
-                            <hr />
-                            <a href="#" class="btn btn-primary btn-block">Load more</a>
+                            <table class="table table-sm my-2">
+                                <tbody>
+                                    <tr>
+                                        <th>Name</th>
+                                        <td>{{ Auth::user()->name }}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Email</th>
+                                        <td>{{ Auth::user()->email }}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Phone</th>
+                                        <td>{{ Auth::user()->phone_number }}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Status</th>
+                                        <td><span class="badge badge-success">Active</span></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                            <span>
+                                <!-- Button trigger modal -->
+                                <button type="button" class="btn btn-primary" data-toggle="modal"
+                                    data-target="#exampleModal">
+                                    Edit Profile
+                                </button>
+
+                                <a href="{{ route('user.logout') }}" style="float: right" class="btn btn-danger ">
+                                    <i class="align-left mr-1 mb-1" data-feather="log-out"></i>
+                                    Logout
+                                </a>
+                            </span>
+
+                            <!-- Modal -->
+                            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                                aria-hidden="true">
+                                <div class="modal-dialog modal-dialog-centered">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLabel">Edit Profile</h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <form action="{{ route('user.profile.update') }}" method="POST"
+                                                enctype="multipart/form-data">
+                                                @csrf
+                                                @method('PUT')
+                                                <input type="hidden" name="current_profile_image"
+                                                    value="{{ Auth::user()->profile_photo }}">
+                                                <div class="form-row">
+                                                    <div class="form-group col-md-6">
+                                                        <input required type="text" name="name"
+                                                            class="form-control form-control-lg"
+                                                            value="{{ Auth::user()->name }}">
+                                                    </div>
+                                                    <div class="form-group col-md-6">
+                                                        <input required type="number" name="phone_number"
+                                                            class="form-control form-control-lg"
+                                                            value="{{ Auth::user()->phone_number }}">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <input required type="email" name="email"
+                                                        class="form-control form-control-lg"
+                                                        value="{{ Auth::user()->email }}">
+                                                </div>
+                                                <div class="form-group">
+                                                    <input type="file" name="profile_photo"
+                                                        class="form-control form-control-lg"
+                                                        value="{{ Auth::user()->profile_photo }}"
+                                                        onchange="readURL1(this);">
+                                                    <img src="{{ asset(Auth::user()->profile_photo) }}"
+                                                        alt="{{ Auth::user()->name }} Profile Photo"
+                                                        class="rounded mt-3">
+                                                    <img src="#" id="one" class="mt-3 rounded" alt="">
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-secondary"
+                                                        data-dismiss="modal">Close</button>
+                                                    <button type="submit" class="btn btn-primary">Save changes</button>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-header">
+                            <h4>Update Password Credentials</h4>
+                        </div>
+                        <div class="card-body">
+                            <form action="{{ route('user.password.update') }}" method="POST">
+                                @csrf
+                                @method('PUT')
+                                <div class="form-group">
+                                    <label for="">Current Password</label>
+                                    <input type="password" name="current_password"
+                                        class="form-control form-control-lg @error('current_password') is-invalid @enderror"
+                                        placeholder="Enter Current Password">
+                                </div>
+                                <div class="form-group">
+                                    <label for="">New Password</label>
+                                    <input type="password" name="password"
+                                        class="form-control form-control-lg @error('password') is-invalid @enderror"
+                                        placeholder="Enter New Password">
+                                    @error('password')
+                                        <span class="text-danger">{{ $message }}</span>
+                                    @enderror
+                                </div>
+                                <div class="form-group">
+                                    <label for="">Confirm Password</label>
+                                    <input type="password" name="password_confirmation"
+                                        class="form-control form-control-lg @error('password_confirmation') is-invalid @enderror"
+                                        placeholder="Confirm Password">
+                                    @error('password_confirmation')
+                                        <span class="text-danger">{{ $message }}</span>
+                                    @enderror
+                                </div>
+
+                                <button type="submit" class="btn btn-primary">Update Password</button>
+                            </form>
                         </div>
                     </div>
                 </div>
@@ -168,4 +312,22 @@
 
         </div>
     </main>
+
+@section('script')
+    <script>
+        function readURL1(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+                reader.onload = function(e) {
+                    $('#one')
+                        .attr('src', e.target.result)
+                        .width(100)
+                        .height(80);
+                };
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+
+    </script>
+@endsection
 @endsection

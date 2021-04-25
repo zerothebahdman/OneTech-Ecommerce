@@ -62,7 +62,7 @@ class SuperAdminController extends Controller
 
         if ($profile_photo) {
             $gen_name = hexdec(uniqid()).'.'.$profile_photo->getClientOriginalExtension();
-            Image::make($profile_photo)->resize(1000, 1000)->save('backend/img/avatars/'.$gen_name);
+            Image::make($profile_photo)->resize(500, 500)->save('backend/img/avatars/'.$gen_name);
 
             $saveImageToDatabase = 'backend/img/avatars/'.$gen_name;
 
@@ -72,7 +72,6 @@ class SuperAdminController extends Controller
                 'name' => $request['name'],
                 'email' => $request['email'],
                 'profile_photo' => $saveImageToDatabase,
-                'created_at' => Carbon::now()
             ]);
 
             return back()->with('success', 'Profile Updated Successfully');
@@ -80,7 +79,6 @@ class SuperAdminController extends Controller
             Admin::findOrFail(Auth::guard('admin')->user()->id)->update([
                 'name' => $request['name'],
                 'email' => $request['email'],
-                'created_at' => Carbon::now()
             ]);
 
             return back()->with('success', 'Profile Updated Successfully');

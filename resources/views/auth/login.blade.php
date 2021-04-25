@@ -1,4 +1,5 @@
-@extends('layouts.backend.login-register')
+@extends('layouts.user.login-register')
+@section('title', 'OneTech Ecommerce | Login For Users')
 
 @section('backend')
 
@@ -9,8 +10,8 @@
                     <div class="col-sm-10 col-md-8 col-lg-6 mx-auto d-table h-100">
                         <div class="d-table-cell align-middle">
 
-                            <div class="text-center mt-4">
-                                <h1 class="h2">Welcome back</h1>
+                            <div class="text-center">
+                                <h1>Welcome back</h1>
                                 <p class="lead">
                                     Sign in to your account to continue
                                 </p>
@@ -19,10 +20,6 @@
                             <div class="card">
                                 <div class="card-body">
                                     <div class="m-sm-4">
-                                        <div class="text-center">
-                                            <img src="{{ asset('backend/img/avatars/avatar-7.png') }}" alt="Chris Wood"
-                                                class="img-fluid rounded-circle" width="132" height="132" />
-                                        </div>
                                         @error('email')
                                             <div class="alert alert-danger alert-dismissible" role="alert">
                                                 <button type="button" class="close" data-dismiss="alert" aria-label="Close">
@@ -74,6 +71,19 @@
                                                     in</button>
                                             </div>
                                         </form>
+
+                                        <div class="form-row">
+                                            <div class="form-group col-md-6 mt-3 btn-group-lg">
+                                                <button type="submit" class="btn btn-info btn-block"><i
+                                                        class="align-left mr-1 mb-1" data-feather="facebook"></i>
+                                                    Facebook</button>
+                                            </div>
+                                            <div class="form-group col-md-6 mt-3 btn-group-lg">
+                                                <button type="submit" class="btn btn-danger btn-block"><i
+                                                        class="fab fa-google align-left mr-1 mb-1"></i>
+                                                    Google</button>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>

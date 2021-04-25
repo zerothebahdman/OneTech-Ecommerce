@@ -15,7 +15,7 @@ class FrontendController extends Controller
         $brands = Brand::latest()->get();
 
         $main_slider = Product::with('brand')->where('main_slider', 1)->latest()->first();
-        $mid_slider = Product::with('brand')->where('mid_slider', 1)->latest()->first();
+        $mid_slider = Product::with(['brand', 'category'])->where('mid_slider', 1)->latest()->paginate(3);
         $trending = Product::with('brand')->where('trending', 1)->latest()->paginate(16);
         $featured = Product::with('brand')->where('status', 1)->latest()->paginate(16);
         $best_rated = Product::with('brand')->where('best_rated', 1)->latest()->paginate(16);

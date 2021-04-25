@@ -1,4 +1,5 @@
-@extends('layouts.backend.login-register')
+@extends('layouts.user.login-register')
+@section('title', 'OneTech Ecommerce | Register For Users')
 
 @section('backend')
     <div class="main d-flex justify-content-center w-100">
@@ -8,11 +9,8 @@
                     <div class="col-sm-10 col-md-8 col-lg-6 mx-auto d-table h-100">
                         <div class="d-table-cell align-middle">
 
-                            <div class="text-center mt-4">
-                                <h1 class="h2">Get started</h1>
-                                <p class="lead">
-                                    Start creating the best possible user experience for you customers.
-                                </p>
+                            <div class="text-center">
+                                <h3>Get started by creating an account today.</h3>
                             </div>
 
                             <div class="card">
@@ -42,6 +40,20 @@
                                                     <span class="text-danger">{{ $message }}</span>
                                                 @enderror
                                             </div>
+
+                                            <div class="form-group">
+                                                <label for="phone_number">Phone Number</label>
+                                                <input id="phone_number"
+                                                    class="form-control form-control-lg @error('phone_number') is-invalid @enderror"
+                                                    required type="number" name="phone_number"
+                                                    value="{{ old('phone_number') }}"
+                                                    placeholder="Enter your Phone Number" />
+
+                                                @error('phone_number')
+                                                    <span class="text-danger">{{ $message }}</span>
+                                                @enderror
+                                            </div>
+
                                             <div class="form-group">
                                                 <label>Password</label>
                                                 <input
@@ -65,6 +77,18 @@
                                                 Already have an account? <a href="{{ route('login') }}">Login</a>
                                             </div>
                                         </form>
+                                        <div class="form-row">
+                                            <div class="form-group col-md-6 mt-3 btn-group-lg">
+                                                <button type="submit" class="btn btn-info btn-block"><i
+                                                        class="align-left mr-1 mb-1" data-feather="facebook"></i>
+                                                    Facebook</button>
+                                            </div>
+                                            <div class="form-group col-md-6 mt-3 btn-group-lg">
+                                                <button type="submit" class="btn btn-danger btn-block"><i
+                                                        class="fab fa-google align-left mr-1 mb-1"></i>
+                                                    Google</button>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>

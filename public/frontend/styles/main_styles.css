@@ -1223,13 +1223,9 @@ select option
 	font-family: 'Montserrat', sans-serif;
 	font-weight: 500;
 	line-height: 1.166;
-	color: #7599b2;
+	color: #474747;
 	text-transform: uppercase;
 	letter-spacing: 0.038em;
-}
-.banner_price
-{
-
 }
 .banner_price
 {
@@ -2108,7 +2104,7 @@ select option
 .banner_2_image
 {
 	min-width: 100%;
-	width: calc(44.8vw);
+	width: calc(40.8vw) !important;
 	position: absolute;
 	top: 50%;
 	-webkit-transform: translateY(-50%);
@@ -2121,6 +2117,17 @@ select option
 .banner_2_image img
 {
 	width: 100%;
+}
+@media(max-width: 768px){
+    .banner_2_image img {
+        width: 350px !important;
+        margin: auto auto;
+    }
+}
+@media(min-width: 1000px){
+    .banner_2_image img {
+        margin-left: 8rem;
+    }
 }
 .banner_2_category
 {

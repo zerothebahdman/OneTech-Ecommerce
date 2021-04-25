@@ -12,21 +12,23 @@
     <meta name="description" content="Responsive Bootstrap 4 Admin &amp; Dashboard Template">
     <meta name="author" content="Bootlab">
 
-    <title>Default Dashboard | AppStack - Admin &amp; Dashboard Template</title>
+    <title>@yield('title', 'OneTech Ecommerce UserDashboard')</title>
 
     <link rel="shortcut icon" href="{{ asset('backend/img/favicon.ico') }}">
 
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500&amp;display=swap" rel="stylesheet">
 
     <link class="js-stylesheet" href="{{ asset('backend/css/light.css') }}" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="{{ asset('frontend/styles/main_styles.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('frontend/styles/responsive.css') }}">
 </head>
 
 <body data-theme="default" data-layout="fluid" data-sidebar-position="left" data-sidebar-behavior="sticky">
     <div class="wrapper">
-        @include('backend.includes.sidebar')
+        {{-- @include('backend.includes.sidebar') --}}
         <div class="main">
+            @include('layouts.user.includes.navbar')
             @include('sweetalert::alert')
-            @include('backend.includes.navbar')
             @yield('dashboard')
 
             <footer class="footer">
@@ -64,6 +66,16 @@
     </div>
 
     <script src="{{ asset('backend/js/app.js') }}"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            // Datatables Responsive
+            $("#datatables-reponsive").DataTable({
+                responsive: true,
+            });
+        });
+
+    </script>
+    @yield('script')
 
 </body>
 

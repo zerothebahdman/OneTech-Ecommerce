@@ -8,6 +8,8 @@ use App\Http\Controllers\Admin\Brand\BrandController;
 use App\Http\Controllers\Admin\Coupon\CouponController;
 use App\Http\Controllers\Admin\Product\ProductsController;
 use App\Http\Controllers\Backend\AdminController;
+use App\Http\Controllers\Frontend\FrontendController;
+use App\Http\Controllers\Frontend\UserDashboardController;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,15 +22,19 @@ use App\Http\Controllers\Backend\AdminController;
 |
 */
 
-Route::get('/', [\App\Http\Controllers\Frontend\FrontendController::class, 'index'])->name('welcome');
+Route::get('/email/verify', function () {
+    return view('auth.verify-email');
+})->middleware('auth')->name('verification.notice');
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth'])->name('dashboard');
+Route::get('/', [FrontendController::class, 'index'])->name('welcome');
 
-// Route::prefix('/admin/dashboard/')->group(function () {
-// });
-Route::get('/user/dashboard/logout', [AdminController::class, 'logout'])->name('user.logout');
+Route::prefix('/user/')->name('user.')->middleware('auth', 'verified')->group(function () {
+    Route::view('dashboard', 'dashboard')->name('dashboard');
+    Route::put('password/update', [UserDashboardController::class, 'updatePassword'])->name('password.update');
+    Route::put('profile/update', [UserDashboardController::class, 'updateProfile'])->name('profile.update');
+    Route::get('dashboard/logout', [UserDashboardController::class, 'logout'])->name('logout');
+
+});
 
 // Admin Dashboard Route
 Route::prefix('/admin/')->name('admin.')->group(function () {
