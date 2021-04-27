@@ -151,6 +151,15 @@
                                         <span class="badge badge-warning">inactive</span>
                                     @endif
                                 </div>
+                                <div class="form-group col-md-2">
+                                    <label>Buy One Get One
+                                        Free: </label> <br>
+                                    @if ($product->buy_one_get_one === 1)
+                                        <span class="badge badge-success">Active</span>
+                                    @else
+                                        <span class="badge badge-warning">inactive</span>
+                                    @endif
+                                </div>
                             </div>
                         </div>
                     </div>

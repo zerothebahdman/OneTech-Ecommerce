@@ -50,7 +50,7 @@
                                                     type="password" name="password" required
                                                     auto-complete="current-password" placeholder="Enter your password" />
                                                 <span class="mt-3">
-                                                    <a href="pages-reset-password.html">Forgot password?</a>
+                                                    <a href="{{ route('password.request') }}">Forgot password?</a>
                                                 </span>
                                             </div>
                                             <div>

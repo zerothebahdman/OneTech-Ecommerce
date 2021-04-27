@@ -230,6 +230,11 @@
                                                 @method('PUT')
                                                 <input type="hidden" name="current_profile_image"
                                                     value="{{ Auth::user()->profile_photo }}">
+                                                <div class="form-group">
+                                                    <input required type="email" name="email"
+                                                        class="form-control-plaintext form-control-lg"
+                                                        value="{{ Auth::user()->email }}" readonly>
+                                                </div>
                                                 <div class="form-row">
                                                     <div class="form-group col-md-6">
                                                         <input required type="text" name="name"
@@ -241,11 +246,6 @@
                                                             class="form-control form-control-lg"
                                                             value="{{ Auth::user()->phone_number }}">
                                                     </div>
-                                                </div>
-                                                <div class="form-group">
-                                                    <input required type="email" name="email"
-                                                        class="form-control form-control-lg"
-                                                        value="{{ Auth::user()->email }}">
                                                 </div>
                                                 <div class="form-group">
                                                     <input type="file" name="profile_photo"

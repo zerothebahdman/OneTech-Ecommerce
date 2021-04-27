@@ -1,8 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
-
-
 <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
 
 <head>
@@ -70,14 +67,8 @@
     </div>
 
     <script src="{{ asset('backend/js/app.js') }}"></script>
-{{--     <script src="{{ asset('backend/js/jquery.js') }}"></script>--}}
-{{--    <script src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>--}}
-{{--    <script src="https://cdn.datatables.net/1.10.24/js/dataTables.bootstrap4.min.js"></script>--}}
-{{--    <script src="https://cdn.datatables.net/fixedheader/3.1.8/js/dataTables.fixedHeader.min.js"></script>--}}
-{{--    <script src="https://cdn.datatables.net/responsive/2.2.7/js/dataTables.responsive.min.js"></script>--}}
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-
-
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-tagsinput/0.8.0/bootstrap-tagsinput.js"
         integrity="sha512-VvWznBcyBJK71YKEKDMpZ0pCVxjNuKwApp4zLF3ul+CiflQi6aIJR+aZCP/qWsoFBA28avL5T5HA+RE+zrGQYg=="
         crossorigin="anonymous"></script>
@@ -90,20 +81,11 @@
                 responsive: true,
             });
         });
+
     </script>
     <script>
-        // $(document).ready(function() {
-        //     var table = $('#datatables-reponsive').DataTable({
-        //         responsive: true,
-        //     });
-        //
-        //     new $.fn.dataTable.FixedHeader(table);
-        // });
-
         $(document).ready(function() {
             $('select[name="category_id"]').on('change', function() {
-
-                // console.log('Listening')
                 var category_id = $(this).val();
                 if (category_id) {
 
@@ -141,9 +123,6 @@
                 })
                 .then((willDelete) => {
                     if (willDelete) {
-                        // swal("Poof! File has been deleted successfull!", {
-                        //     icon: "success",
-                        // });
                         window.location.href = link;
                     } else {
                         swal("Your data is safe!", {

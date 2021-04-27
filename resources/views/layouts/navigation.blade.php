@@ -32,16 +32,30 @@
                         </ul>
                     </div>
                     <div class="top_bar_user">
-                        <div class="user_icon"><img src="{{ asset('frontend/images/user.svg') }}" alt="">
-                        </div>
                         @if (Route::has('login'))
                             @auth
-                                <a href="{{ route('user.dashboard') }}" class="text-sm text-gray-700 underline">HI,
-                                    {{ Auth::user()->name }}</a>
+                                <ul class="standard_dropdown main_nav_dropdown">
+                                    <li class="hassubs">
+                                        <a href="{{ route('user.dashboard') }}" class="text-sm text-gray-700 underline">
+                                            <div class="user_icon">
+                                                <img src="{{ asset('frontend/images/user.svg') }}" alt="">
+                                            </div>
+                                            HI, {{ Auth::user()->name }}<i class="fas fa-chevron-down"></i>
+                                        </a>
+                                        <ul>
+                                            <li><a href="#">Wishlist</a></li>
+                                            <li><a href="#">Checkout</a></li>
+                                            <li><a href="{{ route('user.logout') }}">Logout</a></li>
+                                        </ul>
+                                    </li>
+                                </ul>
                             @else
-                                <a href="{{ route('login') }}" class="text-sm text-gray-700 underline">Log
-                                    in</a>
-
+                                <a href="{{ route('login') }}" class="text-sm text-gray-700 underline">
+                                    <div class="user_icon">
+                                        <img src="{{ asset('frontend/images/user.svg') }}" alt="">
+                                    </div>
+                                    Login
+                                </a>
                                 @if (Route::has('register'))
                                     <a href="{{ route('register') }}"
                                         class="ml-4 text-sm text-gray-700 underline">Register</a>

@@ -21,8 +21,8 @@
                                             class="form-control form-control-lg @error('category_id')is-invalid @enderror">
                                             <option selected="">Choose Category...</option>
                                             @forelse ($categories as $category)
-                                                <option value="{{ $category->id }}" <?php if ($category->id ===
-                                                    $products->category_id) {
+                                                <option value="{{ $category->id }}" <?php if ($category->id
+                                                    === $products->category_id) {
                                                     echo 'selected';
                                                     } ?>>
                                                     {{ $category->category_name }}</option>
@@ -215,6 +215,17 @@
                                             } ?>>
                                             <label class="custom-control-label" for="customSwitch6">Mid
                                                 Slider</label>
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-md-4">
+                                        <div class="custom-control custom-switch">
+                                            <input type="checkbox" class="custom-control-input" id="customSwitch7" value="1"
+                                                name="buy_one_get_one" <?php if ($products->buy_one_get_one
+                                            === 1) {
+                                            echo 'checked';
+                                            } ?>>
+                                            <label class="custom-control-label" for="customSwitch7">Buy One Get One
+                                                Free</label>
                                         </div>
                                     </div>
                                 </div>

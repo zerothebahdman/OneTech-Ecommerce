@@ -19,6 +19,7 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('frontend/plugins/slick-1.8.0/slick.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('frontend/styles/main_styles.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('frontend/styles/responsive.css') }}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@10.16.6/dist/sweetalert2.min.css">
 
 </head>
 
@@ -27,8 +28,8 @@
 
     @yield('welcome')
 
-
     <script src="{{ asset('frontend/js/jquery-3.3.1.min.js') }}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.16.6/dist/sweetalert2.all.min.js"></script>
     <script src="{{ asset('frontend/styles/bootstrap4/popper.js') }}"></script>
     <script src="{{ asset('frontend/styles/bootstrap4/bootstrap.min.js') }}"></script>
     <script src="{{ asset('frontend/plugins/greensock/TweenMax.min.js') }}"></script>
@@ -40,6 +41,50 @@
     <script src="{{ asset('frontend/plugins/slick-1.8.0/slick.js') }}"></script>
     <script src="{{ asset('frontend/plugins/easing/easing.js') }}"></script>
     <script src="{{ asset('frontend/js/custom.js') }}"></script>
+
+    <script>
+        $(document).ready(function() {
+            $('.add_wishlist').on('click', function() {
+                var id = $(this).data('id');
+                if (id) {
+                    $.ajax({
+                        url: "{{ url('/user/add/wishlist/') }}/" + id,
+                        type: "GET",
+                        dataType: "json",
+                        success: function(data) {
+                            const Toast = Swal.mixin({
+                                toast: true,
+                                position: 'top-end',
+                                showConfirmButton: false,
+                                timer: 4000,
+                                timerProgressBar: true,
+                                didOpen: (toast) => {
+                                    toast.addEventListener('mouseenter', Swal
+                                        .stopTimer)
+                                    toast.addEventListener('mouseleave', Swal
+                                        .resumeTimer)
+                                }
+                            })
+                            if ($.isEmptyObject(data.error)) {
+                                Toast.fire({
+                                    icon: 'success',
+                                    title: data.success
+                                });
+                            } else {
+                                Toast.fire({
+                                    icon: 'error',
+                                    title: data.error
+                                });
+                            }
+                        }
+                    });
+                } else {
+                    alert(danger);
+                }
+            });
+        });
+
+    </script>
 </body>
 
 </html>

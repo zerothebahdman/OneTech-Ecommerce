@@ -232,6 +232,7 @@
                                                                 New</label>
                                                         </div>
                                                     </div>
+
                                                     <div class="form-group col-md-2">
                                                         <div class="custom-control custom-switch">
                                                             <input type="checkbox" class="custom-control-input"
@@ -246,6 +247,14 @@
                                                                 id="customSwitch6" value="1" name="mid_slider">
                                                             <label class="custom-control-label" for="customSwitch6">Mid
                                                                 Slider</label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group col-md-4">
+                                                        <div class="custom-control custom-switch">
+                                                            <input type="checkbox" class="custom-control-input"
+                                                                id="customSwitch7" name="buy_one_get_one" value="1">
+                                                            <label class="custom-control-label" for="customSwitch7">Buy One
+                                                                Get One Free</label>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -288,8 +297,7 @@
                                             </td>
                                             <td>{{ $product->category->category_name }}</td>
                                             <td>{{ $product->subCategory->sub_category_name }}</td>
-                                            <td>{{ number_format($product->selling_price, 3, ',', ',') }}</td>
-                                            {{-- <td>{{ Str::limit($product->product_details, 20)  }}</td> --}}
+                                            <td>{{ number_format($product->selling_price) }}</td>
                                             <td>{{ $product->product_quantity }}</td>
                                             <td>
                                                 @if ($product->status !== 1)

@@ -85,6 +85,7 @@ class ProductsController extends Controller
             'mid_slider' => $request['mid_slider'],
             'trending' => $request['trending'],
             'hot_new' => $request['hot_new'],
+            'buy_one_get_one' => $request['buy_one_get_one'],
             'hot_deals' => $request['hot_deals'],
             'status' => 1,
 //            'created_at' => Carbon::now(),
@@ -133,6 +134,7 @@ class ProductsController extends Controller
             'hot_new' => $request['hot_new'],
             'hot_deals' => $request['hot_deals'],
             'video_link' => $request['video_link'],
+            'buy_one_get_one' => $request['buy_one_get_one'],
         ]);
 
         if ($update) {

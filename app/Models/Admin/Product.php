@@ -16,7 +16,7 @@ class Product extends Model
     use HasFactory, Sluggable;
 
     protected $fillable = [
-        'category_id', 'sub_category_id', 'slug', 'brand_id', 'product_name', 'product_color', 'product_details', 'product_quantity', 'product_size', 'first_image', 'second_image', 'third_image', 'main_slider', 'mid_slider', 'hot_new', 'hot_deals', 'best_rated', 'trending', 'video_link', 'product_code', 'selling_price', 'discount_price', 'status'
+        'category_id', 'sub_category_id', 'slug', 'brand_id', 'product_name', 'product_color', 'product_details', 'product_quantity', 'product_size', 'first_image', 'second_image', 'third_image', 'main_slider', 'mid_slider', 'hot_new', 'hot_deals', 'best_rated', 'trending', 'video_link', 'product_code', 'selling_price', 'discount_price', 'status', 'buy_one_get_one'
     ];
 
      public function sluggable(): array
@@ -50,11 +50,11 @@ class Product extends Model
 
     public function getProductSellingPriceAttribute($value)
     {
-        return number_format($this->selling_price, 3, ',', ',');
+        return number_format($this->selling_price);
     }
 
     public function getProductDiscountPriceAttribute($value)
     {
-        return number_format($this->discount_price, 3, ',', ',');
+        return number_format($this->discount_price);
     }
 }

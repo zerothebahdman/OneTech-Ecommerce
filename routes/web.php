@@ -10,6 +10,7 @@ use App\Http\Controllers\Admin\Product\ProductsController;
 use App\Http\Controllers\Backend\AdminController;
 use App\Http\Controllers\Frontend\FrontendController;
 use App\Http\Controllers\Frontend\UserDashboardController;
+use App\Http\Controllers\WishlistController;
 
 /*
 |--------------------------------------------------------------------------
@@ -28,12 +29,15 @@ Route::get('/email/verify', function () {
 
 Route::get('/', [FrontendController::class, 'index'])->name('welcome');
 
-Route::prefix('/user/')->name('user.')->middleware('auth', 'verified')->group(function () {
-    Route::view('dashboard', 'dashboard')->name('dashboard');
-    Route::put('password/update', [UserDashboardController::class, 'updatePassword'])->name('password.update');
-    Route::put('profile/update', [UserDashboardController::class, 'updateProfile'])->name('profile.update');
-    Route::get('dashboard/logout', [UserDashboardController::class, 'logout'])->name('logout');
+Route::prefix('/user/')->name('user.')->group(function () {
+    Route::get('add/wishlist/{id}', [WishlistController::class, 'addWishList'])->name('wishlist');
 
+    Route::middleware(['auth', 'verified'])->group(function () {
+        Route::view('dashboard', 'dashboard')->name('dashboard');
+        Route::put('password/update', [UserDashboardController::class, 'updatePassword'])->name('password.update');
+        Route::put('profile/update', [UserDashboardController::class, 'updateProfile'])->name('profile.update');
+        Route::get('dashboard/logout', [UserDashboardController::class, 'logout'])->name('logout');
+    });
 });
 
 // Admin Dashboard Route
