@@ -11,6 +11,7 @@ use App\Http\Controllers\Backend\AdminController;
 use App\Http\Controllers\Frontend\FrontendController;
 use App\Http\Controllers\Frontend\UserDashboardController;
 use App\Http\Controllers\WishlistController;
+use App\Http\Controllers\AddToCartController;
 
 /*
 |--------------------------------------------------------------------------
@@ -30,7 +31,9 @@ Route::get('/email/verify', function () {
 Route::get('/', [FrontendController::class, 'index'])->name('welcome');
 
 Route::prefix('/user/')->name('user.')->group(function () {
-    Route::get('add/wishlist/{id}', [WishlistController::class, 'addWishList'])->name('wishlist');
+    Route::get('add/wishlist/{id}', [WishlistController::class, 'addWishList'])->name('add.wishlist');
+    Route::get('add/cart/{id}', [AddToCartController::class, 'addToCart'])->name('add.cart');
+    Route::get('check', [AddToCartController::class, 'check']);
 
     Route::middleware(['auth', 'verified'])->group(function () {
         Route::view('dashboard', 'dashboard')->name('dashboard');

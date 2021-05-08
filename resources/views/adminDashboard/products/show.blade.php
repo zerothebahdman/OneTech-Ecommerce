@@ -42,12 +42,12 @@
                             <div class="form-row">
                                 <div class="form-group col-md-3">
                                     <label for="selling">Selling Price</label>
-                                    <h4>{{ $product->selling_price }}</h4>
+                                    <h4>&#8358; {{ $product->product_selling_price }}</h4>
                                 </div>
                                 <div class="form-group col-md-3">
                                     <label for="discount">Discount Price</label>
                                     @if (!is_null($product->discount_price))
-                                        <h4>{{ $product->discount_price }}</h4>
+                                        <h4>&#8358; {{ $product->product_discount_price }}</h4>
                                     @else
                                         <h6>Nothing here</h6>
                                     @endif

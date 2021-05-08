@@ -78,7 +78,7 @@
             <!-- Logo -->
             <div class="col-lg-2 col-sm-3 col-3 order-1">
                 <div class="logo_container">
-                    <div class="logo"><a href="#">OneTech</a></div>
+                    <div class="logo"><a href="{{ route('welcome') }}">OneTech</a></div>
                 </div>
             </div>
 
@@ -95,6 +95,10 @@
                                         <span class="custom_dropdown_placeholder clc">All Categories</span>
                                         <i class="fas fa-chevron-down"></i>
                                         <ul class="custom_list clc">
+                                            @php
+                                                $categories = \DB::table('categories')->get();
+                                            @endphp
+
                                             @foreach ($categories as $category)
                                                 <li><a class="clc" href="#">{{ $category->category_name }}</a>
                                                 </li>
@@ -114,14 +118,20 @@
             <!-- Wishlist -->
             <div class="col-lg-4 col-9 order-lg-3 order-2 text-lg-left text-right">
                 <div class="wishlist_cart d-flex flex-row align-items-center justify-content-end">
-                    <div class="wishlist d-flex flex-row align-items-center justify-content-end">
-                        <div class="wishlist_icon"><img src="{{ asset('frontend/images/heart.png') }}" alt="">
+                    @auth
+                        @php
+                            $wishlist = App\Models\Users\Wishlist::where('user_id', auth()->user()->id)
+                                ->get();
+                        @endphp
+                        <div class="wishlist d-flex flex-row align-items-center justify-content-end">
+                            <div class="wishlist_icon"><img src="{{ asset('frontend/images/heart.png') }}" alt="">
+                            </div>
+                            <div class="wishlist_content">
+                                <div class="wishlist_text"><a href="#">Wishlist</a></div>
+                                <div class="wishlist_count">{{ count($wishlist) }}</div>
+                            </div>
                         </div>
-                        <div class="wishlist_content">
-                            <div class="wishlist_text"><a href="#">Wishlist</a></div>
-                            <div class="wishlist_count">115</div>
-                        </div>
-                    </div>
+                    @endauth
 
                     <!-- Cart -->
                     <div class="cart">

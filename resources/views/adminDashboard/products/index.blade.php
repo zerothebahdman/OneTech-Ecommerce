@@ -277,7 +277,6 @@
                                         <th>Code</th>
                                         <th>Product</th>
                                         <th>Category</th>
-                                        <th>SubCategory</th>
                                         <th>Price(&#8358;)</th>
                                         <th>Quantity</th>
                                         <th>Status</th>
@@ -296,7 +295,6 @@
                                                 {{ $product->product_name }}
                                             </td>
                                             <td>{{ $product->category->category_name }}</td>
-                                            <td>{{ $product->subCategory->sub_category_name }}</td>
                                             <td>{{ number_format($product->selling_price) }}</td>
                                             <td>{{ $product->product_quantity }}</td>
                                             <td>

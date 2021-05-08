@@ -10,6 +10,8 @@ use Illuminate\Support\Str;
 /**
  * @method static where(string $string, $slug)
  * @method static create(array $array)
+ * @property mixed discount_price
+ * @property mixed selling_price
  */
 class Product extends Model
 {
@@ -19,7 +21,7 @@ class Product extends Model
         'category_id', 'sub_category_id', 'slug', 'brand_id', 'product_name', 'product_color', 'product_details', 'product_quantity', 'product_size', 'first_image', 'second_image', 'third_image', 'main_slider', 'mid_slider', 'hot_new', 'hot_deals', 'best_rated', 'trending', 'video_link', 'product_code', 'selling_price', 'discount_price', 'status', 'buy_one_get_one'
     ];
 
-     public function sluggable(): array
+    public function sluggable(): array
     {
         return [
             'slug' => [
@@ -48,12 +50,12 @@ class Product extends Model
          return $this->belongsTo(Brand::class);
     }
 
-    public function getProductSellingPriceAttribute($value)
+    public function getProductSellingPriceAttribute($value): string
     {
         return number_format($this->selling_price);
     }
 
-    public function getProductDiscountPriceAttribute($value)
+    public function getProductDiscountPriceAttribute($value): string
     {
         return number_format($this->discount_price);
     }

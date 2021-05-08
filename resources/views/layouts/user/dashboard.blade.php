@@ -27,7 +27,7 @@
     <div class="wrapper">
         {{-- @include('backend.includes.sidebar') --}}
         <div class="main">
-            @include('layouts.user.includes.navbar')
+            @include('layouts.navigation')
             @include('sweetalert::alert')
             @yield('dashboard')
 

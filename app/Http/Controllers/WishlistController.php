@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Auth;
 
 class WishlistController extends Controller
 {
+
     public function addWishList($id)
     {
         $user = Auth::id();
