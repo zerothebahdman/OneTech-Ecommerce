@@ -29,6 +29,7 @@ Route::get('/email/verify', function () {
 })->middleware('auth')->name('verification.notice');
 
 Route::get('/', [FrontendController::class, 'index'])->name('welcome');
+Route::get('/product/details/{product}', [FrontendController::class, 'show'])->name('product.details');
 
 Route::prefix('/user/')->name('user.')->group(function () {
     Route::get('add/wishlist/{id}', [WishlistController::class, 'addWishList'])->name('add.wishlist');

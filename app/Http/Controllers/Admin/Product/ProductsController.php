@@ -51,13 +51,13 @@ class ProductsController extends Controller
 
         if ($image_one && $image_two && $image_three) {
             $gen_image_one = hexdec(uniqid()).'.'.$image_one->getClientOriginalExtension();
-            Image::make($image_one)->resize('800', '600')->save('backend/img/products/'.$gen_image_one);
+            Image::make($image_one)->resize('800', '700')->save('backend/img/products/'.$gen_image_one);
 
             $gen_image_two = hexdec(uniqid()).'.'.$image_two->getClientOriginalExtension();
-            Image::make($image_two)->resize('800', '600')->save('backend/img/products/'.$gen_image_two);
+            Image::make($image_two)->resize('800', '700')->save('backend/img/products/'.$gen_image_two);
 
             $gen_image_three = hexdec(uniqid()).'.'.$image_three->getClientOriginalExtension();
-            Image::make($image_three)->resize('800', '600')->save('backend/img/products/'.$gen_image_three);
+            Image::make($image_three)->resize('800', '700')->save('backend/img/products/'.$gen_image_three);
         }
 
         $saveImageOneToDatabase = 'backend/img/products/'.$gen_image_one;
@@ -164,7 +164,7 @@ class ProductsController extends Controller
 
         if ($image_one) {
             $gen_image_one = hexdec(uniqid()).'.'.$image_one->getClientOriginalExtension();
-            Image::make($image_one)->resize('800', '600')->save('backend/img/products/'.$gen_image_one);
+            Image::make($image_one)->resize('800', '700')->save('backend/img/products/'.$gen_image_one);
 
             @unlink($old_first_image);
 
@@ -179,7 +179,7 @@ class ProductsController extends Controller
 
         if ($image_two) {
             $gen_image_two = hexdec(uniqid()).'.'.$image_two->getClientOriginalExtension();
-            Image::make($image_two)->resize('800', '600')->save('backend/img/products/'.$gen_image_two);
+            Image::make($image_two)->resize('800', '700')->save('backend/img/products/'.$gen_image_two);
 
             @unlink($old_second_image);
 
@@ -193,7 +193,7 @@ class ProductsController extends Controller
         }
         if ($image_three) {
             $gen_image_three = hexdec(uniqid()).'.'.$image_three->getClientOriginalExtension();
-            Image::make($image_three)->resize('800', '600')->save('backend/img/products/'.$gen_image_three);
+            Image::make($image_three)->resize('800', '700')->save('backend/img/products/'.$gen_image_three);
 
             @unlink($old_third_image);
 

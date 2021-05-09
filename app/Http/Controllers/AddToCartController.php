@@ -21,7 +21,7 @@ class AddToCartController extends Controller
                     'qty' => 1,
                     'price' => $product->selling_price,
                     'weight' => 1,
-                    'options' => ['image' => $product->first_image],
+                    'options' => ['image' => $product->first_image, 'size' => '', 'color' => ''],
                 ]);
 
                 return response()->json(['success' => 'Product Successfully added to cart']);
@@ -32,7 +32,7 @@ class AddToCartController extends Controller
                     'qty' => 1,
                     'price' => $product->discount_price,
                     'weight' => 1,
-                    'options' => ['image' => $product->first_image],
+                    'options' => ['image' => $product->first_image, 'size' => '', 'color' => ''],
                 ]);
 
                 return response()->json(['success' => 'Product Successfully added to cart']);

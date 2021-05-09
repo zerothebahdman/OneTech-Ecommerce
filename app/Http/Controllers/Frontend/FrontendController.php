@@ -27,4 +27,18 @@ class FrontendController extends Controller
 
         return view('welcome', compact('categories', 'main_slider', 'brands', 'mid_slider', 'hot_deals', 'best_rated', 'trending', 'hot_new', 'featured', 'computing', 'phones_tablets', 'get_one_free'));
     }
+
+    public function show(Product $product)
+    {
+        $product_details = Product::with(['brand', 'category'])->where('products.id', $product->id)->first();
+
+
+        $color = $product->product_color;
+        $productColor = explode(',', $color);
+
+        $size = $product->product_size;
+        $productSize = explode(',', $size);
+
+        return view('product_details', compact('product_details', 'productColor', 'productSize'));
+    }
 }
