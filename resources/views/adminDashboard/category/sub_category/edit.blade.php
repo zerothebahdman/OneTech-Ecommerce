@@ -37,7 +37,7 @@
                                     </div>
                                 </div>
                             @enderror
-                            <form action="{{ route('admin.subCategory.update', $subCategory->slug) }}" method="POST">
+                            <form action="{{ route('admin.sub_category.update', $subCategory->slug) }}" method="POST">
                                 @csrf
                                 @method('PUT')
                                 <div class="form-group">

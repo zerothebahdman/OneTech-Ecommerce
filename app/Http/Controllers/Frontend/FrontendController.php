@@ -11,7 +11,7 @@ use Illuminate\Http\Request;
 class FrontendController extends Controller
 {
     public function index() {
-        $categories = Category::with('subCategory')->get();
+        $categories = Category::with('sub_category')->get();
         $brands = Brand::latest()->get();
 
         $main_slider = Product::with('brand')->where('main_slider', 1)->latest()->first();
@@ -33,10 +33,10 @@ class FrontendController extends Controller
         $product_details = Product::with(['brand', 'category'])->where('products.id', $product->id)->first();
 
 
-        $color = $product->product_color;
+        $color = $product_details->product_color;
         $productColor = explode(',', $color);
 
-        $size = $product->product_size;
+        $size = $product_details->product_size;
         $productSize = explode(',', $size);
 
         return view('product_details', compact('product_details', 'productColor', 'productSize'));

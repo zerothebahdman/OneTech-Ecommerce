@@ -7,7 +7,6 @@ use App\Http\Controllers\Admin\Category\CategoryController;
 use App\Http\Controllers\Admin\Brand\BrandController;
 use App\Http\Controllers\Admin\Coupon\CouponController;
 use App\Http\Controllers\Admin\Product\ProductsController;
-use App\Http\Controllers\Backend\AdminController;
 use App\Http\Controllers\Frontend\FrontendController;
 use App\Http\Controllers\Frontend\UserDashboardController;
 use App\Http\Controllers\WishlistController;
@@ -34,7 +33,15 @@ Route::get('/product/details/{product}', [FrontendController::class, 'show'])->n
 Route::prefix('/user/')->name('user.')->group(function () {
     Route::get('add/wishlist/{id}', [WishlistController::class, 'addWishList'])->name('add.wishlist');
     Route::get('add/cart/{id}', [AddToCartController::class, 'addToCart'])->name('add.cart');
+    Route::post('add/product/cart/{id}', [AddToCartController::class, 'addProductToCart'])->name('add.product.cart');
     Route::get('check', [AddToCartController::class, 'check']);
+    Route::get('product/cart', [AddToCartController::class, 'cartDetails'])->name('display.cart');
+    Route::get('remove/cart/item/{rowId}', [AddToCartController::class, 'removeCartItem'])->name('remove.cart.item');
+    Route::get('remove/all/cart/item', [AddToCartController::class, 'removeAllCartItem'])->name('remove.all.cart.item');
+    Route::post('update/cart/item', [AddToCartController::class, 'updateCartItem'])->name('update.cart.item');
+    Route::get('product/quick/view/{id}', [AddToCartController::class, 'productQuickView']);
+    Route::post('insert/cart/item', [AddToCartController::class, 'insertCartItem'])->name('insert.cart.item');
+    Route::get('product/checkout', [AddToCartController::class, 'productCheckout'])->name('product.checkout');
 
     Route::middleware(['auth', 'verified'])->group(function () {
         Route::view('dashboard', 'dashboard')->name('dashboard');
@@ -70,11 +77,11 @@ Route::prefix('/admin/')->name('admin.')->group(function () {
         Route::get('product/category/{slug}', [CategoryController::class , 'destroy'])->name('category.delete');
 
         /* --------------- Sub Category -----------------*/
-        Route::get('product/sub-category', [CategoryController::class, 'subCategoryIndex'])->name('subCategory.index');
-        Route::post('product/sub-category', [CategoryController::class, 'subCategoryStore'])->name('subCategory.store');
-        Route::get('product/sub-category/edit/{slug}', [CategoryController::class, 'subCategoryEdit'])->name('subCategory.edit');
-        Route::put('product/sub-category/{slug}', [CategoryController::class, 'subCategoryUpdate'])->name('subCategory.update');
-        Route::get('/product/sub-category/{slug}', [CategoryController::class, 'subCategoryDelete'])->name('subCategory.delete');
+        Route::get('product/sub-category', [CategoryController::class, 'subCategoryIndex'])->name('sub_category.index');
+        Route::post('product/sub-category', [CategoryController::class, 'subCategoryStore'])->name('sub_category.store');
+        Route::get('product/sub-category/edit/{slug}', [CategoryController::class, 'subCategoryEdit'])->name('sub_category.edit');
+        Route::put('product/sub-category/{slug}', [CategoryController::class, 'subCategoryUpdate'])->name('sub_category.update');
+        Route::get('/product/sub-category/{slug}', [CategoryController::class, 'subCategoryDelete'])->name('sub_category.delete');
 
         /*------------------ Product Brand route --------------------*/
         Route::get('product/brand', [BrandController::class, 'index'])->name('brand.index');

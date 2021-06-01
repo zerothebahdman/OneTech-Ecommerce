@@ -21,7 +21,8 @@ class SuperAdminController extends Controller
         return view('adminDashboard.dashboard');
     }
 
-    public function store(Request $request){
+    public function store(Request $request): \Illuminate\Http\RedirectResponse
+    {
         if (!Auth::guard('admin')->attempt($request->only('email', 'password'), $request->filled('remember'))) {
             throw ValidationException::withMessages([
                 'email' => 'This does not match our records'

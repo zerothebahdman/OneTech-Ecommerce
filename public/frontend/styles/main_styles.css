@@ -147,7 +147,7 @@ h6::selection
 }
 .form-control
 {
-	color: #db5246;
+	color: #353535 !important;
 }
 section
 {
@@ -1680,15 +1680,30 @@ select option
 	font-weight: 500;
 	margin-top: 25px;
 }
+.product_details_price
+{
+	font-size: 20px;
+	font-weight: 500;
+	margin-top: 10px !important;
+}
+.product_details_price span
+{
+    font-size: 16px;
+    font-weight: 400;
+    color: rgba(214, 13, 13, 0.6);
+    text-decoration: line-through;
+    margin-left: 10px;
+}
 .product_price.discount
 {
-	color: #df3b3b;
+	color: #0e0e0e;
 }
 .product_price span
 {
-	font-size: 12px;
+	font-size: 14px;
 	font-weight: 400;
-	color: rgba(0,0,0,0.6);
+	color: rgba(214, 13, 13, 0.6);
+    text-decoration: line-through;
 	margin-left: 10px;
 }
 .product_name

@@ -33,13 +33,13 @@
                                             <li class="hassubs">
                                                 <a href="#">
                                                     {{ $category->category_name }}
-                                                    @if (!$category->subCategory->isEmpty())
+                                                    @if (!$category->sub_category->isEmpty())
                                                         <i class="fas fa-chevron-right"></i>
                                                     @endif
                                                 </a>
-                                                @if (!$category->subCategory->isEmpty())
+                                                @if (!$category->sub_category->isEmpty())
                                                     <ul>
-                                                        @foreach ($category->subCategory as $subCategoryItem)
+                                                        @foreach ($category->sub_category as $subCategoryItem)
                                                             <li><a href="#">{{ $subCategoryItem->sub_category_name }}<i
                                                                         class="fas fa-chevron-right"></i></a></li>
                                                         @endforeach
@@ -442,9 +442,14 @@
                                                                     </a>
                                                                 </div>
                                                             </div>
+{{--                                                            <div class="product_extras">--}}
+{{--                                                                <button class="product_cart_button add_cart"--}}
+{{--                                                                        data-id="{{ $row->id }}">--}}
+{{--                                                                    Add to Cart--}}
+{{--                                                                </button>--}}
+{{--                                                            </div>--}}
                                                             <div class="product_extras">
-                                                                <button class="product_cart_button add_cart"
-                                                                        data-id="{{ $row->id }}">
+                                                                <button id="{{ $row->id }}" data-toggle="modal" data-target="#addToCartModal" onclick="product(this.id)" class="product_cart_button">
                                                                     Add to Cart
                                                                 </button>
                                                             </div>
@@ -2192,4 +2197,95 @@
         </div>
         @include('layouts.footer')
     </div>
+
+
+    <div class="modal fade" id="addToCartModal" tabindex="-1" aria-labelledby="cartModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-xl">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 class="modal-title" id="cartModalLabel">Product Quick View</h3>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form method="post" action="{{ route('user.insert.cart.item') }}">
+                        @csrf
+                        <input type="hidden" name="product" id="product"/>
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="card">
+                                    <img src="" alt="" id="product_image"/>
+                                    <div class="card-body">
+                                        <h5 class="card-title text-center" id="product_name"></h5>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="card">
+                                    <ul class="list-group">
+                                        <li class="list-group-item">Product Category: <span id="product_category"></span></li>
+                                        <li class="list-group-item">Product SubCategory: <span id="product_subcategory"></span></li>
+                                        <li class="list-group-item">Brand: <span id="product_brand"></span></li>
+                                        <li class="list-group-item">Product Price:  <span id="product_price"></span></li>
+                                        <li class="list-group-item">Product Code: <span id="product_code"></span></li>
+                                        <li class="list-group-item">Product Status: <span class="badge badge-success">Available</span></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label for="qty">Quantity</label>
+                                    <input type="number" name="qty" class="form-control" id="qty" value="1"/>
+                                </div>
+                                <div class="form-group">
+                                    <label for="color">Select Color</label>
+                                    <select id="color" name="color" class="custom-select">
+
+                                    </select>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="modal-footer mt-3">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <button type="submit" class="btn btn-primary">Add To Cart</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+@endsection
+@section('scripts')
+    <script>
+        $(document).ready(function() {
+            $('.js-example-basic-single').select2();
+        });
+
+        function product(id){
+            $.ajax({
+                url: "{{ url('/user/product/quick/view') }}/"+id,
+                type: "GET",
+                dataType: "json",
+                success: function (data){
+                    $('#product_name').text(data.product.product_name);
+                    $('#product_image').attr('src', data.product.first_image);
+                    $('#product_brand').text(data.product.brand.brand_name);
+                    $('#product_category').text(data.product.category.category_name);
+                    $('#product_price').text(data.product.selling_price);
+                    $('#product_code').text(data.product.product_code);
+                    $('#product_subcategory').text(data.product.sub_category.sub_category_name);
+                    $('#product').val(data.product.id);
+
+                    let d = $('select[name="color"]').empty();
+                    $.each(data.color, function(key, value) {
+                       $('select[name="color"]').append('<option value="'+value+'">'+value+'</option>');
+                    });
+                }
+
+            })
+        }
+
+    </script>
 @endsection

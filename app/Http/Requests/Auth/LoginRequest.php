@@ -26,7 +26,7 @@ class LoginRequest extends FormRequest
      *
      * @return array
      */
-    public function rules()
+    public function rules(): array
     {
         return [
             'email' => 'required|string|email',
@@ -39,7 +39,7 @@ class LoginRequest extends FormRequest
      *
      * @return void
      *
-     * @throws \Illuminate\Validation\ValidationException
+     * @throws ValidationException
      */
     public function authenticate()
     {
@@ -61,7 +61,7 @@ class LoginRequest extends FormRequest
      *
      * @return void
      *
-     * @throws \Illuminate\Validation\ValidationException
+     * @throws ValidationException
      */
     public function ensureIsNotRateLimited()
     {

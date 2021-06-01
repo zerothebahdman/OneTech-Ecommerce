@@ -244,51 +244,59 @@
                         <div class="product_category">{{ $product_details->category->category_name }} > {{ $product_details->brand->brand_name }}</div>
                         <div class="product_name">{{ $product_details->product_name }}</div>
                         <div class="rating_r rating_r_4 product_rating"><i></i><i></i><i></i><i></i><i></i></div>
-                        <div class="product_text"><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas fermentum. laoreet turpis, nec sollicitudin dolor cursus at. Maecenas aliquet, dolor a faucibus efficitur, nisi tellus cursus urna, eget dictum lacus turpis.</p></div>
+                        <div class="product_text"><p>{!! Str::limit($product_details->product_details, 260) !!}</p></div>
                         <div class="order_info d-flex flex-row">
-                            <form action="#">
-                                <div class="clearfix" style="z-index: 1000;">
+                            <form action="{{ route('user.add.product.cart', $product_details->id) }}" method="post">
+                                @csrf
+                                <div class="row">
+                                    @if($product_details->product_size !== null)
+                                        <!-- Product Size -->
+                                            <div class="col-12 col-lg-4">
+                                                <div class="form-group">
+                                                    <label for="size">Size</label>
+                                                    <select id="size" name="size" class="form-control js-example-basic-single">
+                                                        @foreach($productSize as $row)
+                                                            <option value="{{ $row }}">{{ $row }}</option>
+                                                        @endforeach
+                                                    </select>
+                                                </div>
+                                            </div>
+                                    @endif
 
-                                    <!-- Product Quantity -->
-                                    <div class="product_quantity clearfix">
-                                        <span>Quantity: </span>
-                                        <input id="quantity_input" type="text" pattern="[0-9]*" value="1">
-                                        <div class="quantity_buttons">
-                                            <div id="quantity_inc_button" class="quantity_inc quantity_control"><i class="fas fa-chevron-up"></i></div>
-                                            <div id="quantity_dec_button" class="quantity_dec quantity_control"><i class="fas fa-chevron-down"></i></div>
+                                    <!-- Product Color -->
+                                    <div class="col-12 col-lg-4">
+                                        <div class="form-group form-group-lg">
+                                            <label for="color">Color</label>
+                                            <select style="padding: 4rem 4rem !important;" id="color" name="color"  class="form-control form-control-lg js-example-basic-single">
+                                                @foreach($productColor as $row)
+                                                    <option value="{{ $row }}">{{ $row }}</option>
+                                                @endforeach
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-lg-4">
+                                        <div class="form-group">
+                                            <label for="quantity">Quantity</label>
+                                            <input type="number" id="quantity" value="1" pattern="[0-9]*" name="quantity" class="form-control"/>
                                         </div>
                                     </div>
 
-                                    <!-- Product Color -->
-                                    <ul class="product_color">
-                                        <li>
-                                            <span>Color: </span>
-                                            <div class="color_mark_container"><div id="selected_color" class="color_mark"></div></div>
-                                            <div class="color_dropdown_button"><i class="fas fa-chevron-down"></i></div>
-
-                                            <ul class="color_list">
-                                                <li><div class="color_mark" style="background: #999999;"></div></li>
-                                                <li><div class="color_mark" style="background: #b19c83;"></div></li>
-                                                <li><div class="color_mark" style="background: #000000;"></div></li>
-                                            </ul>
-                                        </li>
-                                    </ul>
-
-                                </div>
-
-                                @if ($product_details->discount_price === null)
-                                    <div class="product_price">&#8358; {{ $product_details->product_selling_price }}</div>
-                                @else
-                                    <div class="product_price">
-                                        &#8358; {{ $product_details->product_discount_price }}
-                                        <span>&#8358; {{ $product_details->product_selling_price }}</span>
+                                    <div class="col-12 col-lg-12">
+                                        @if ($product_details->discount_price === null)
+                                            <div class="product_price">&#8358; {{ $product_details->product_selling_price }}</div>
+                                        @else
+                                            <div class="product_details_price">
+                                                &#8358; {{ $product_details->product_discount_price }}
+                                                <span>&#8358; {{ $product_details->product_selling_price }}</span>
+                                            </div>
+                                        @endif
                                     </div>
-                                @endif
-                                <div class="button_container">
-                                    <button type="button" class="button cart_button">Add to Cart</button>
-                                    <div class="product_fav"><i class="fas fa-heart"></i></div>
-                                </div>
+                                    <div class="button_container">
+                                        <button type="submit" class="button cart_button mt-0">Add to Cart</button>
+                                        <div class="product_fav"><i class="fas fa-heart"></i></div>
+                                    </div>
 
+                                </div>
                             </form>
 
                         </div>
@@ -426,4 +434,12 @@
     </div>
     @include('layouts.footer')
 </div>
+    <script src="{{ asset('frontend/js/product_custom.js') }}"></script>
+@endsection
+@section('scripts')
+    <script>
+        $(document).ready(function() {
+            $('.js-example-basic-single').select2();
+        });
+    </script>
 @endsection

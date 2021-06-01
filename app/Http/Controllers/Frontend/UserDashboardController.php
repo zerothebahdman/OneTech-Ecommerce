@@ -11,7 +11,7 @@ use Intervention\Image\Facades\Image;
 
 class UserDashboardController extends Controller
 {
-    public function updatePassword(Request $request)
+    public function updatePassword(Request $request): \Illuminate\Http\RedirectResponse
     {
         $request->validate([
             'current_password' => ['bail', 'required', 'string'],
@@ -30,7 +30,7 @@ class UserDashboardController extends Controller
         }
     }
 
-    public function updateProfile(Request $request)
+    public function updateProfile(Request $request): \Illuminate\Http\RedirectResponse
     {
         $request->validate([
             'name' => ['bail', 'required', 'min:3', 'string'],
@@ -68,7 +68,8 @@ class UserDashboardController extends Controller
         }
     }
 
-    public function logout(){
+    public function logout(): \Illuminate\Http\RedirectResponse
+    {
         Auth::logout();
 
         return redirect()->route('login')->with('toast_success', 'You have logged out successfully');

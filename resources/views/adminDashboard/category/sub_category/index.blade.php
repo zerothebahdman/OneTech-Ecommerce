@@ -27,7 +27,7 @@
                                                 <span aria-hidden="true">&times;</span>
                                             </button>
                                         </div>
-                                        <form action="{{ route('admin.subCategory.store') }}" method="POST">
+                                        <form action="{{ route('admin.sub_category.store') }}" method="POST">
                                             <div class="modal-body m-3">
                                                 @csrf
 
@@ -93,12 +93,12 @@
                                             <td>{{ $subCategory->sub_category_name }}</td>
                                             <td>{{ $subCategory->created_at->diffForHumans() }}</td>
                                             <td>
-                                                <a href="{{ route('admin.subCategory.edit', $subCategory->slug) }}"
+                                                <a href="{{ route('admin.sub_category.edit', $subCategory->slug) }}"
                                                     class="btn btn-outline-primary">
                                                     <i class="align-left mr-1 mb-1" data-feather="edit-2"></i> Edit
                                                 </a>
 
-                                                <a href="{{ route('admin.subCategory.delete', $subCategory->slug) }}"
+                                                <a href="{{ route('admin.sub_category.delete', $subCategory->slug) }}"
                                                     class="btn btn-outline-danger" id="delete">
                                                     <i class="align-left mr-1 mb-1" data-feather="trash-2"></i> Delete
                                                 </a>

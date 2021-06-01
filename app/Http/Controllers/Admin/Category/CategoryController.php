@@ -117,7 +117,7 @@ class CategoryController extends Controller
             'slug' => SlugService::createSlug(SubCategory::class, 'slug', $request->sub_category_name),
         ]);
 
-        return redirect()->route('admin.subCategory.index')->with('toast_success', 'SubCategory Updated Successfully');
+        return redirect()->route('admin.sub_category.index')->with('toast_success', 'SubCategory Updated Successfully');
     }
 
     public function subCategoryDelete($slug)

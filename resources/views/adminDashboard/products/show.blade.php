@@ -17,7 +17,7 @@
                                 </div>
                                 <div class="form-group col-md-4">
                                     <label for="inputCategory">Sub Categories</label>
-                                    <h4>{{ $product->subCategory->sub_category_name }}</h4>
+                                    <h4>{{ $product->sub_category->sub_category_name }}</h4>
                                 </div>
                                 <div class="form-group col-md-4">
                                     <label for="inputBrands">Brands</label>

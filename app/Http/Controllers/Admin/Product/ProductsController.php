@@ -25,7 +25,7 @@ class ProductsController extends Controller
     {
         $categories = Category::latest()->get();
         $brands = Brand::latest()->get();
-        $products = Product::with(['subCategory', 'category'])->latest()->get();
+        $products = Product::with(['sub_category', 'category'])->latest()->get();
 
         return view('adminDashboard.products.index', compact('products', 'categories', 'brands'));
     }
@@ -88,7 +88,6 @@ class ProductsController extends Controller
             'buy_one_get_one' => $request['buy_one_get_one'],
             'hot_deals' => $request['hot_deals'],
             'status' => 1,
-//            'created_at' => Carbon::now(),
         ]);
          return back()->with('success', $request['product_name'] . ' added successfully');
 
@@ -248,7 +247,7 @@ class ProductsController extends Controller
     }
 
     public function productDetails($slug){
-        $product = Product::with(['category', 'subCategory', 'brand'])->where('slug', $slug)->first();
+        $product = Product::with(['category', 'sub_category', 'brand'])->where('slug', $slug)->first();
 
         return view('adminDashboard.products.show', compact('product'));
     }

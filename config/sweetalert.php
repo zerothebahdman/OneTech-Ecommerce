@@ -69,7 +69,7 @@ return [
     | for particular modal just use the width() helper method.
     */
 
-    'width' => env('SWEET_ALERT_WIDTH', '32rem'),
+    'width' => env('SWEET_ALERT_WIDTH', '40rem'),
 
     /*
     |--------------------------------------------------------------------------
@@ -95,7 +95,7 @@ return [
     | for particular modal just use the padding() helper method.
     */
 
-    'padding' => env('SWEET_ALERT_PADDING', '1.25rem'),
+    'padding' => env('SWEET_ALERT_PADDING', '1rem'),
 
     /*
     |--------------------------------------------------------------------------
@@ -137,7 +137,7 @@ return [
     |
     */
 
-    'show_close_button' => env('SWEET_ALERT_CLOSE_BUTTON', false),
+    'show_close_button' => env('SWEET_ALERT_CLOSE_BUTTON', true),
 
     /*
     |--------------------------------------------------------------------------
@@ -162,7 +162,7 @@ return [
 
     'middleware' => [
 
-        'autoClose' => env('SWEET_ALERT_MIDDLEWARE_AUTO_CLOSE', false),
+        'autoClose' => env('SWEET_ALERT_MIDDLEWARE_AUTO_CLOSE', true),
 
         'toast_position' => env('SWEET_ALERT_MIDDLEWARE_TOAST_POSITION', 'top-end'),
 
@@ -170,7 +170,7 @@ return [
 
         'timer' => env('SWEET_ALERT_MIDDLEWARE_ALERT_CLOSE_TIME', 6000),
 
-        'auto_display_error_messages' => env('SWEET_ALERT_AUTO_DISPLAY_ERROR_MESSAGES', false),
+        'auto_display_error_messages' => env('SWEET_ALERT_AUTO_DISPLAY_ERROR_MESSAGES', true),
     ],
 
     /*

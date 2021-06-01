@@ -26,21 +26,22 @@ class Category extends Model
         ];
     }
 
-    public function getRouteKeyName()
+    public function getRouteKeyName(): string
     {
         return 'slug';
     }
     // /**
-    //  * Get all of the subCategory for the Category
+    //  * Get all of the sub_category for the Category
     //  *
     //  * @return \Illuminate\Database\Eloquent\Relations\HasMany
     //  */
-    public function subCategory()
+    public function sub_category(): \Illuminate\Database\Eloquent\Relations\HasMany
     {
         return $this->hasMany(SubCategory::class);
     }
 
-    public function product(){
+    public function product(): \Illuminate\Database\Eloquent\Relations\HasMany
+    {
          return $this->hasMany(Product::class);
     }
 }

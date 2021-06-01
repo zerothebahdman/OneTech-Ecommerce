@@ -40,7 +40,7 @@ class Product extends Model
          return $this->belongsTo(Category::class);
     }
 
-    public function subCategory(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    public function sub_category(): \Illuminate\Database\Eloquent\Relations\BelongsTo
     {
          return $this->belongsTo(SubCategory::class);
     }
